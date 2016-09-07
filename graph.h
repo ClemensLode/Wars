@@ -16,8 +16,8 @@ public:
 	{
 		int X1,Y1,X2,Y2;
 	} Daten[200];
-	Image gelaende,leute;
-	RECT Gelaende,Leute;
+	Image gelaende,leute,rahmen;
+	RECT Gelaende,Leute,Rahmen;
 };
 extern Graph graph;
 #endif

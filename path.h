@@ -16,9 +16,10 @@ public:
 class haeuser_class
 {
 public:
-		//void Neuer_Leut(int wo);
+		void Neuer_Leut(int was,int wo);
 		basics basic;
 		int Stoff[5];
+		int bewohner;
 };
 
 class pflanzen_class
@@ -26,7 +27,7 @@ class pflanzen_class
 public:
 		basics basic;
 		int Art;
-		void check(void);
+		void grow(void);
 		int Stoff[5];
 };
 
@@ -38,16 +39,16 @@ class Pathfinding
 public:
 		signed char wegx[REICHWEITE];
 		signed char wegy[REICHWEITE];
-		int activ,newgo,wegp,laenge,cx,cy,gx,gy,wait,phase,richtung; //aktuelle Koordinaten und Ziel
+		int alter,activ,newgo,wegp,laenge,cx,cy,gx,gy,wait,phase,richtung,hunger; //aktuelle Koordinaten und Ziel
 		int home;
 		int Stoff[5];
 		void stop(void);
 		void gotoxy(int gox, int goy);
-		void Next_action(void);
 		void schritt(int wer);
 		void action(void);
 		void besetzen(int wer);
 		int Find(int was);
+		void Neues_Haus();
 		basics basic;
 };
 

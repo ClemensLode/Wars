@@ -7,6 +7,26 @@ int feld[4];
 unsigned int scrollx,scrolly,feinx,feiny;
 long xx,yy,k;
 
+void Welt::Reload_Area(void)
+{
+	int tx;
+	for(tx=0;tx<KARTEMEM;tx++)
+	{
+		area[tx].ObjektNum=0;
+		area[tx].ObjektArt=0;
+	}
+	for(tx=0;tx<ANZPFLANZ;tx++) if(pflanz[tx].basic.vorhanden==1)
+	{
+		area[pflanz[tx].basic.ax+tab100[pflanz[tx].basic.ay]].ObjektNum=tx;
+		area[pflanz[tx].basic.ax+tab100[pflanz[tx].basic.ay]].ObjektArt=pflanz[tx].Art;
+	}
+	for(tx=0;tx<ANZHAUS;tx++) if(haus[tx].basic.vorhanden==1)
+	{
+		area[haus[tx].basic.ax+tab100[haus[tx].basic.ay]].ObjektNum=tx;
+		area[haus[tx].basic.ax+tab100[haus[tx].basic.ay]].ObjektArt=HAUS;
+	}
+};
+
 void Welt::Schaffe_Wasser(void)   // Es werde Wasser!	(Karte[x]=1)
 {
 	if(karte[0]==0) // Ist dies ein Neustart?
@@ -19,7 +39,7 @@ void Welt::Schaffe_Wasser(void)   // Es werde Wasser!	(Karte[x]=1)
 			if((karte[xx+tab100[yy]]>=12)&&(karte[xx+tab100[yy]]<=15)) karte[xx+tab100[yy]]=1; else 
 				karte[xx+tab100[yy]]=0; //Nein? Dann Daten (Land/Wasser) aus aktueller Welt holen
 	}
-}
+};
 
 		
 
@@ -60,7 +80,7 @@ void Welt::Kueste_verkalkulieren(void)
  {
 	 for(xx=1;xx<KARTEX;xx++)
 		 for(yy=1;yy<KARTEY;yy++)
-			 if(karte[xx+tab100[yy]]==1)
+/*			 if(karte[xx+tab100[yy]]==1)
 			 {
 				 if(karte[xx-1+tab100[yy]]==1) //oben!
 				 {
@@ -168,10 +188,10 @@ void Welt::Kueste_verkalkulieren(void)
 					 else
 					 if((karte[xx+1+tab100[yy]]==0)&&(karte[xx+1+tab100[yy-1]]==0)&&(karte[xx+tab100[yy-1]]==0))
 						 wasserk[(xx+tab100[yy])*4+3]=7;
-					}
+				}
 				 tkarte[xx+tab100[yy]]=12;
 
-				} else
+				} else*/
 				tkarte[xx+tab100[yy]]=4+rand()%4;
 				MoveMemory(karte,tkarte,KARTEMEM);
  }
@@ -179,7 +199,7 @@ void Welt::Kueste_verkalkulieren(void)
  void Welt::Rendern(void)  // Höhen und Geländesprites errechnen
 {
 	int inhalt;
-	for(inhalt=0;inhalt<KARTEMEM;inhalt++) temper[inhalt]=rand()%10;
+	for(inhalt=0;inhalt<KARTEMEM;inhalt++) temper[inhalt]=rand()%3;
 	inhalt=0;
 	for(xx=0;xx<=KARTEX;xx++) for(yy=0;yy<=KARTEY;yy++)
 	{
@@ -194,6 +214,7 @@ void Welt::Kueste_verkalkulieren(void)
 		}*/
 	}
 	for(xx=0;xx<=ANZHAUS;xx++)
+		if(haus[xx].basic.vorhanden==1)
 	{
 		area[haus[xx].basic.ax+tab100[haus[xx].basic.ay]].Level=8;
 		area[haus[xx].basic.ax+1+tab100[haus[xx].basic.ay]].Level=8;
@@ -266,17 +287,16 @@ BOOL Welt::Fail(char *szMsg)
 
 void Welt::Plaziere_Objekte()
 {
-	for(xx=0;xx<ANZHAUS;xx++) 
+	for(xx=0;xx<STARTHAEUSER;xx++)
 	haus[xx].basic.setxy((rand()%(KARTEX-10))+5,(rand()%(KARTEY-10))+5);	
 	// Haus Koordinaten gesetzt
-//	FillMemory(objekt,KARTEMEM,0);
 	for(xx=0;xx<ANZPFLANZ;xx++)
 	{
 		pflanz[xx].basic.setxy((rand()%(KARTEX-10))+5,(rand()%(KARTEY-10))+5);
 		switch(rand()%2)
 		{
-		case 0:pflanz[xx].Art=BEERENSTRAUCH;pflanz[xx].Stoff[BEEREN]=20;break;//Beerenstrauch
-		case 1:pflanz[xx].Art=BAUM;pflanz[xx].Stoff[HOLZ]=10;break; //Baum
+		case 0:pflanz[xx].Art=BEERENSTRAUCH;pflanz[xx].Stoff[BEEREN]=20;pflanz[xx].Stoff[HOLZ]=0;break;//Beerenstrauch
+		case 1:pflanz[xx].Art=BAUM;pflanz[xx].Stoff[HOLZ]=10;pflanz[xx].Stoff[BEEREN]=0;break; //Baum
 		}
 		pflanz[xx].basic.vorhanden=1;
 		pflanz[xx].basic.calculateXY();
@@ -284,7 +304,7 @@ void Welt::Plaziere_Objekte()
 		area[pflanz[xx].basic.ax+tab100[pflanz[xx].basic.ay]].ObjektNum=xx;
 	}
 	// Pflanzen sprießen aus dem Boden *plopp*
-	for(xx=0;xx<ANZHAUS;xx++)
+	for(xx=0;xx<STARTHAEUSER;xx++)
 	{
 		leut[xx].stop();
 		leut[xx].basic.setxy(haus[xx].basic.ax+1,haus[xx].basic.ay);
@@ -293,12 +313,14 @@ void Welt::Plaziere_Objekte()
 		leut[xx].Stoff[BEEREN]=0;
 		leut[xx].Stoff[HOLZ]=0;
 		leut[xx].basic.vorhanden=1;
-		leut[xx].Find(HOLZ);
+		leut[xx].alter=10;
 		haus[xx].basic.vorhanden=1;
  		haus[xx].Stoff[BEEREN]=0;
+		haus[xx].Stoff[HOLZ]=100;
 		haus[xx].basic.calculateXY();
 		area[haus[xx].basic.ax+tab100[haus[xx].basic.ay]].ObjektArt=HAUS;
 		area[haus[xx].basic.ax+tab100[haus[xx].basic.ay]].ObjektNum=xx;
+		leut[xx].hunger=0;
 	}
 	//Leute zufällig plaziert, Früchte verteilt
 };
@@ -320,13 +342,9 @@ void Welt::calculateXY(void)
    	area[xx+tab100[yy]].absx=(((xx+input.scrollx)<<5)+(input.feinx<<2))-(((yy+input.scrolly)<<5)+(input.feiny<<2));
 	area[xx+tab100[yy]].absy=(((xx+input.scrollx)<<4)+(input.feinx<<1))+(((yy+input.scrolly)<<4)+(input.feiny<<1))-(tadder<<3);
 	}
-	for(xx=0;xx<ANZHAUS;xx++) 
-	{
-		haus[xx].basic.calculateXY();
-		leut[xx].basic.calculateXY();
-	};
-	for(xx=0;xx<ANZPFLANZ;xx++)
-		pflanz[xx].basic.calculateXY();
+	for(xx=0;xx<ANZHAUS;xx++) if(haus[xx].basic.vorhanden==1) haus[xx].basic.calculateXY();
+	for(xx=0;xx<ANZMANN;xx++) if(leut[xx].basic.vorhanden==1) leut[xx].basic.calculateXY();
+	for(xx=0;xx<ANZPFLANZ;xx++) if(pflanz[xx].basic.vorhanden==1) pflanz[xx].basic.calculateXY();
 };
 
 void Welt::Es_werde_Licht(void)	  // Erstellung der kompletten Welt
@@ -336,8 +354,8 @@ void Welt::Es_werde_Licht(void)	  // Erstellung der kompletten Welt
   Schaffe_Wasser();			// Land teilen in Wasser und Land
   for(k=0;k<2;k++) Flut_Ebbe(); // 2x das Land fluten oder das Wasser verebben (kommt auf Variable "see" drauf an)
   Kueste_verkalkulieren();	// Küstenverlauf berechnen (für Sprites)
-  ZeroMemory(gebirge,KARTEMEM); // Reset des Arrays der Gebirgesprites
-  ZeroMemory(temper,KARTEMEM);
+//  ZeroMemory(gebirge,KARTEMEM); // Reset des Arrays der Gebirgesprites
+//  ZeroMemory(temper,KARTEMEM);
   for(xx=0;xx<KARTEMEM;xx++) area[xx].Sprite=0;
   for(xx=0;xx<KARTEX;xx++) 
 	  for(yy=0;yy<KARTEY;yy++) 

@@ -12,24 +12,25 @@ extern long xx,yy,k;
 // Alle Konstanten
 const KARTEX=50;
 const KARTEY=50;
-const KARTEMEM=2500;
-const REICHWEITE=10;
-const ANZMANN=200;
-const ANZHAUS=10;
-const ANZPFLANZ=20;
-const BEEREN=2;
+const KARTEMEM=KARTEX*KARTEY;
+const REICHWEITE=KARTEX;
+const ANZMANN=100;
+const ANZHAUS=100;
+const ANZPFLANZ=100;
+const STARTHAEUSER=4;
+const BEEREN=2;//IDs der Objekte
 const HOLZ=1;
-const BAUM=1;
+const BAUM=1;  
 const BEERENSTRAUCH=2;
 const HAUS=3;
-
+const WOHNKAPAZITAET=3; //Standart grün/braun-Pixel-Haus 
 
 class Welt
 {
 public:
 	int temper[KARTEMEM];
 	int tkarte[KARTEMEM];
-	int wasserk[KARTEMEM*4];
+	//int wasserk[KARTEMEM*4];
 	int gebirge[KARTEMEM];
 //	unsigned char _3DDAT[KARTEMEM];
 	int karte[KARTEMEM];
@@ -43,13 +44,14 @@ public:
 	BOOL Fail(char *szMsg);	
 	void Minimap();    // Kleine verschiebbare Minimap malen
 	void Berechne_tab100();
-	void On_screen();	 // Puffer löschen, Puffer mit Welt füllen, Mit Flip auf den Bildschirm bringen
-	void Schaffe_Wasser();		 // 
+	void Paint_Objects();	 // Puffer löschen, Puffer mit Welt füllen, Mit Flip auf den Bildschirm bringen
+	void Schaffe_Wasser();		 
 	void Flut_Ebbe();
 	void Plaziere_Objekte();
 	void Kueste_verkalkulieren();
 	void Rendern();
 	void Es_werde_Licht();
+	void Reload_Area();
 };
 
 extern unsigned int number;

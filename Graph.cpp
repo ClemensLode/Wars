@@ -18,31 +18,37 @@ extern long xx,yy,k;
 
 void Welt::Minimap()
 {
-	for(xx=0;xx<=KARTEX;xx++) for(yy=0;yy<=KARTEY;yy++)
+	for(xx=0;xx<=KARTEX;xx++) for(yy=0;yy<=KARTEY;yy++) 
 	{
-		screen.SetColor(0,area[xx+tab100[yy]].Level*16,0);
-		screen.PutPixel(screen.BackBuffer,xx-yy+ADDX,((xx+yy)>>1)+ADDY);
-		if(welt.karte[xx+tab100[yy]]==5)
+		if((area[xx+tab100[yy]].ObjektArt>0)&&(area[xx+tab100[yy]].ObjektArt!=HAUS))
 		{
-			screen.SetColor(255,0,0);
-			screen.PutPixel(screen.BackBuffer,xx-yy+ADDX,((xx+yy)>>1)+ADDY);
+		 if((xx==input.KxPos)&&(yy==input.KyPos)) screen.SetColor(255,255,255);else
+		 screen.SetColor(50,area[xx+tab100[yy]].ObjektArt*50+100,50);
+		 for(k=0;k<ANZMANN;k++) if((leut[k].basic.vorhanden==1)&&(leut[k].basic.ax==xx)&&(leut[k].basic.ay==yy))
+			 screen.SetColor(50,50,255);
+		 screen.PutPixel(screen.BackBuffer,xx-yy+ADDX,((xx+yy)>>1)+ADDY);
 		}
+		else
+		{
+		 screen.SetColor(0,0,0);
+		 screen.PutPixel(screen.BackBuffer,xx-yy+ADDX,((xx+yy)>>1)+ADDY);
+		};
 	}
 };
-
 		
-void Welt::On_screen(void)
+void Welt::Paint_Objects(void)
 {
 //	char charbuf[20];
 	int inhalt;
 	screen.BufferClear(screen.BackBuffer,0,0,0);
-	for(yy=3;yy<=KARTEY-3;yy++) for(xx=3;xx<=KARTEX-3;xx++) if(((xx!=input.KxPos)||(yy!=input.KyPos))&&(welt.area[xx+tab100[yy]].Besetzt==0))
+	for(yy=3;yy<=KARTEY-3;yy++) for(xx=3;xx<=KARTEX-3;xx++) 
+	//if(((xx!=input.KxPos)||(yy!=input.KyPos))&&(welt.area[xx+tab100[yy]].Besetzt==0))
 	{
 		inhalt=area[xx+tab100[yy]].Sprite;
 		if(inhalt==15) graph.PutGelaende(area[xx+tab100[yy]].absx,area[xx+tab100[yy]].absy-8,inhalt); else graph.PutGelaende(area[xx+tab100[yy]].absx,area[xx+tab100[yy]].absy,inhalt);
 	}
-
 	for(xx=0;xx<ANZMANN;xx++) 
+	if(leut[xx].basic.vorhanden==1)
 	{
 		leut[xx].basic.calculateXY();
 		if(leut[xx].activ==1) graph.PutDrac(leut[xx].basic.absx+24,leut[xx].basic.absy+16,102);
@@ -50,6 +56,18 @@ void Welt::On_screen(void)
 		if(leut[xx].Stoff[HOLZ]>0) graph.PutDrac(leut[xx].basic.absx+28,leut[xx].basic.absy-5,106);
 		yy=leut[xx].phase+leut[xx].richtung*8+19;
 		graph.PutDrac(leut[xx].basic.absx+24,leut[xx].basic.absy-5,yy);
+		screen.SetColor(255,255,255);
+		for(yy=0;yy<=(leut[xx].hunger/20);yy++) 
+		{
+		  screen.PutPixel(screen.BackBuffer,leut[xx].basic.absx+40,leut[xx].basic.absy-yy);
+		  screen.PutPixel(screen.BackBuffer,leut[xx].basic.absx+41,leut[xx].basic.absy-yy);
+		}	  
+		screen.SetColor(0,0,0);
+		for(yy=0;yy<=(leut[xx].alter/20);yy++) 
+		{
+		  screen.PutPixel(screen.BackBuffer,leut[xx].basic.absx+38,leut[xx].basic.absy-yy);
+		  screen.PutPixel(screen.BackBuffer,leut[xx].basic.absx+39,leut[xx].basic.absy-yy);
+		}	  
 	}
 
 	for(xx=0;xx<=ANZHAUS;xx++) if(haus[xx].basic.vorhanden==1)
@@ -67,14 +85,19 @@ void Welt::On_screen(void)
 			case BAUM:if(pflanz[xx].Stoff[HOLZ]<10) graph.PutDrac(pflanz[xx].basic.absx+21,pflanz[xx].basic.absy+6,105); 
 				else graph.PutDrac(pflanz[xx].basic.absx+21,pflanz[xx].basic.absy+6,104);break;
 		}
-		
+		//if(pflanz[xx].Stoff[BEEREN]>0) for(yy=0;yy<pflanz[xx].Stoff[BEEREN]/2;yy++) graph.PutDrac(pflanz[xx].basic.absx+4+yy*2,pflanz[xx].basic.absy,101);
+		//if(pflanz[xx].Stoff[HOLZ]>0) for(yy=0;yy<pflanz[xx].Stoff[HOLZ]/2;yy++) graph.PutDrac(pflanz[xx].basic.absx+4+yy*2,pflanz[xx].basic.absy+5,106);
 	}
   	if(input.Rahmen==1)
 	{
-	screen.SetColor(50,200,50);
-	screen.DrawRect(screen.BackBuffer,input.xPos,input.yPos,input.RStartX,input.RStartY);
+		screen.SetColor(50,200,50);
+		screen.DrawRect(screen.BackBuffer,input.xPos,input.yPos,input.RStartX,input.RStartY,false);
 	}
-	//welt_minimap();
+//	welt.Minimap();
+//	graph.rahmen.DrawSprite(graph.Rahmen,0,0);
+	screen.SetColor(255,255,255);
+	screen.UpdateFrames();
+	screen.ShowFrames(screen.BackBuffer,100,100);
 	screen.Flip();
 };
 
@@ -124,23 +147,32 @@ void Graph::Fuelle_Daten(void)
 void Graph::Init_Sprites()
 {
 	graph.randl=50;
-	graph.randr=750;
-	graph.randu=550;
+	graph.randr=749;
+	graph.randu=549;
 	graph.rando=50;
+// Rahmen
+/*	rahmen.En_Graph=screen;
+	rahmen.szImage = "rahmen.bmp";
+	rahmen.Quelle  = spr;
+	rahmen.Ziel    = screen.BackBuffer;
+    rahmen.SetColorKey(0,0,0);
+	rahmen.CreateSprite(800,600);
+//Rahmen setzen. Braucht man ja nur an einer Stelle
+	SetRect(&Rahmen,0,0,799,599);				   */
 // Gelaende
 	gelaende.En_Graph=screen;
 	gelaende.szImage = "3d.bmp";
 	gelaende.Quelle  = spr;
 	gelaende.Ziel    = screen.BackBuffer;
     gelaende.SetColorKey(0,0,0);
-	gelaende.CreateSprite(640,480);
+	gelaende.CreateSprite(640,480,true);
 //	Leute
 	leute.En_Graph=screen;
 	leute.szImage = "drac.bmp";
 	leute.Quelle  = spr;
 	leute.Ziel    = screen.BackBuffer;
 	leute.SetColorKey(0,0,0);
-	leute.CreateSprite(640,480);
+	leute.CreateSprite(640,480,true);
 };
 
 void Graph::PutGelaende(int X,int Y,int texture)

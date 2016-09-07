@@ -18,3 +18,9 @@ void Engine_CDAudio::Stop()
 	mciSendString("stop all",NULL,NULL,NULL);
 }
 
+void Engine_CDAudio::PlayFromTo(int start,int end)
+{
+	char cmd[30];
+	wsprintf(cmd,"play cdaudio from %d to %d",start,end);
+	mciSendString(cmd,NULL,NULL,NULL);
+}

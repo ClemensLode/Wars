@@ -12,7 +12,7 @@ class Input
 	int sx,sy,startsx,startsy,startfx,startfy,startscx,startscy,akfeinx,akfeiny,akscrollx,akscrolly;
 	void Calculate_KPos();
 public:
-	int RStartX,RStartY,scrollx,scrolly,xPos,yPos,feinx,feiny,KxPos,KyPos,Rahmen;;
+	int InAction,RStartX,RStartY,scrollx,scrolly,xPos,yPos,feinx,feiny,KxPos,KyPos,Rahmen;;
 	void Move(unsigned int lParam);
 	void Update_scroll();
 	void Scroll(char direction);

@@ -36,7 +36,12 @@ return lpdid2;
 BOOL Engine_Input::InstallKeyboard()
 {
 	DIPROPDWORD dipdw;
-    Keyboard = CreateDevice2((GUID*)&GUID_SysKeyboard);
+    Keyboard = this->CreateDevice2((GUID*)&GUID_SysKeyboard);
+
+	Keyboard->SetDataFormat( &c_dfDIKeyboard );
+	
+	Keyboard->SetCooperativeLevel(info.hwnd,DISCL_NONEXCLUSIVE |
+		                          DISCL_FOREGROUND );
 
     dipdw.diph.dwSize = sizeof( DIPROPDWORD );
 	dipdw.diph.dwHeaderSize = sizeof( DIPROPHEADER );
@@ -44,10 +49,7 @@ BOOL Engine_Input::InstallKeyboard()
 	dipdw.diph.dwHow = DIPH_DEVICE;
 	dipdw.dwData = 0;
     Keyboard->SetProperty( DIPROP_BUFFERSIZE, &dipdw.diph );
-	Keyboard->SetDataFormat( &c_dfDIKeyboard );
-	Keyboard->SetCooperativeLevel(info.hwnd,DISCL_NONEXCLUSIVE |
-		                          DISCL_FOREGROUND );
-	
+	this->Keyboard->Acquire();
 return TRUE;
 }
 
@@ -55,14 +57,16 @@ BOOL Engine_Input::InstallMouse()
 {
 	DIPROPDWORD dipdw;
 	Mouse = CreateDevice2((GUID*)&GUID_SysMouse);
+
+   	Mouse->SetDataFormat( &c_dfDIMouse );
+	Mouse->SetCooperativeLevel(info.hwnd,DISCL_NONEXCLUSIVE |
+		                          DISCL_BACKGROUND ); 
+
     dipdw.diph.dwSize = sizeof( DIPROPDWORD );
 	dipdw.diph.dwHeaderSize = sizeof( DIPROPHEADER );
 	dipdw.diph.dwSize = 0;
 	dipdw.diph.dwHow = DIPH_DEVICE;
 	dipdw.dwData = 0;
-   	Mouse->SetDataFormat( &c_dfDIMouse );
-	Mouse->SetCooperativeLevel(info.hwnd,DISCL_EXCLUSIVE |
-		                          DISCL_FOREGROUND ); 
 
 	Mouse->SetProperty( DIPROP_BUFFERSIZE, &dipdw.diph );
 	
@@ -92,10 +96,4 @@ void Engine_Input::ReleaseObjects()
     }
 }
 
-char Engine_Input::CheckKeyPressed()
-{
-	char keys[256];
-	Keyboard->GetDeviceState(sizeof(keys),keys);
-    return keys && 0x80;
-}
 

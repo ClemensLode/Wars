@@ -4,15 +4,16 @@
 HBRUSH Farbe;
 
 BOOL Engine_Graphics::DrawRect(IDirectDrawSurface *Oberflaeche,int x1,
-			  int y1,int x2,int y2)
+			  int y1,int x2,int y2,BOOL filled)
 { 
 	if (FAILED(Oberflaeche->GetDC(&info.hdc)))
 	{
 		return Fail("Engine::DrawRect = GetDC");
 	}
     SetBkMode(info.hdc,TRANSPARENT);
-	Farbe = CreateHatchBrush(HS_HORIZONTAL,RGB(tR,tG,tB));
-    SelectObject( info.hdc, Farbe);
+	//Farbe = CreateSolidBrush(RGB(tR,tG,tB));
+    //SetDCBrushColor(info.hdc,RGB(0,0,255));
+	//SelectObject( info.hdc, GetStockObject(DC_BRUSH));
     Rectangle( info.hdc, x1, y1, x2, y2 );
     if (FAILED(Oberflaeche->ReleaseDC(info.hdc)))
 	{

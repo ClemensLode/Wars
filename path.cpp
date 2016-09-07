@@ -6,25 +6,57 @@ unsigned int tab100[KARTEY];
 extern unsigned int scrollx,scrolly,feinx,feiny;
 extern long xx,yy,k;
 
-void pflanzen_class::check()
+void pflanzen_class::grow()
 {
-	if(Stoff[BEEREN]==0) basic.vorhanden=0;
+	//int tx;
+	//for(tx=1;tx<3;tx++)
+	if(Stoff[Art]==0) basic.vorhanden=0;/*else if((Stoff[Art]<30)&&(basic.vorhanden==1)) Stoff[Art]++;*/
 };
 
-/*void haeuser_class::Neuer_Leut(int wo)
+void haeuser_class::Neuer_Leut(int was,int wo)
 {
 	int tx;
 	for(tx=0;tx<ANZMANN;tx++) if(leut[tx].basic.vorhanden==0)
 	{
+		Stoff[BEEREN]-=2;  // 10 Beeren vom Haus zermatschen ...
+		leut[tx].basic.vorhanden=1; // ...dafür ein neues Leut herausstampfen
 		leut[tx].stop();
-		leut[tx].basic.vorhanden=1;
-		leut[tx].home=wo;
-		leut[tx].Stoff[BEEREN]=0;
-		leut[tx].basic.setxy(basic.ax+1,basic.ay);
-		leut[tx].Find(BEEREN);
-		tx=ANZMANN;
+		leut[tx].Stoff[BEEREN]=0; 
+		leut[tx].basic.setxy(basic.ax+2,basic.ay);
+		leut[tx].alter=0;
+		switch(was)
+		{
+		case 1:
+			Stoff[HOLZ]-=10; //Pionier? dann auch Holz vom Haus mitgehen lassen, ...
+			leut[tx].Stoff[HOLZ]=10;  // ... unter die Arme klemmen,
+			leut[tx].home=0;		  //heimatlos machen,
+			leut[tx].gotoxy(rand()%10-5+basic.ax,rand()%10-5+basic.ay); //verschwinden und Bauplatz "suchen"
+			break;
+		case 2:
+			leut[tx].Stoff[HOLZ]=0;// Bewohner brauchen kein Holz
+			leut[tx].home=wo;// eine Seele mehr im Haus
+			haus[wo].bewohner++;
+			break;
+		}
+		break;
+	}			   
+};
+void Pathfinding::Neues_Haus()
+{
+	int tx;
+	for(tx=0;tx<ANZHAUS;tx++) if(haus[tx].basic.vorhanden==0)
+	{
+		haus[tx].basic.vorhanden=1;
+		Stoff[HOLZ]=0;
+		haus[tx].Stoff[BEEREN]=0;
+		haus[tx].Stoff[HOLZ]=0;
+		haus[tx].basic.setxy(basic.ax-1,basic.ay);
+		welt.area[haus[tx].basic.ax+tab100[haus[tx].basic.ay]].ObjektArt=HAUS;
+		welt.area[haus[tx].basic.ax+tab100[haus[tx].basic.ay]].ObjektNum=tx;
+		home=tx;
+		tx=ANZHAUS;
 	}
-};*/
+};
 void basics::setxy(int setx, int sety)
 {
 		ax=setx;
@@ -132,6 +164,9 @@ int Pathfinding::suche()
 		  if((x==cx)&&(y==cy))
 			{
 			laenge=j;
+			free(kartex);
+			free(kartey);
+			free(items);
 			return 0;
 			}
 		 }
@@ -306,19 +341,71 @@ void Pathfinding::feld(int wer)
 void Pathfinding::action()
 {
 int ty;
+	hunger++;
 	switch(welt.area[basic.ax+tab100[basic.ay]].ObjektArt)
 		{
-			case BAUM:Stoff[HOLZ]++;
-				pflanz[welt.area[basic.ax+tab100[basic.ay]].ObjektNum].Stoff[HOLZ]--;
+			case BAUM:if(Stoff[HOLZ]==0)
+					  {Stoff[HOLZ]++;
+					  ty=welt.area[basic.ax+tab100[basic.ay]].ObjektNum;
+					  pflanz[ty].Stoff[HOLZ]--;
+	   				  if(pflanz[ty].Stoff[HOLZ]<=0)
+					  {
+						 welt.area[basic.ax+tab100[basic.ay]].ObjektNum=0; 
+						 welt.area[basic.ax+tab100[basic.ay]].ObjektArt=0;
+						 pflanz[ty].basic.vorhanden=0;
+					  }
+					  };
 				gotoxy(haus[home].basic.ax,haus[home].basic.ay);break;
-			case BEERENSTRAUCH:Stoff[BEEREN]++;gotoxy(haus[home].basic.ax,haus[home].basic.ay);break;
- 			case HAUS:for(ty=0;ty<3;ty++)
-					   if(Stoff[ty]>0)
-					   {haus[home].Stoff[ty]+=Stoff[ty];Stoff[ty]=0;if(haus[home].Stoff[ty]<20) Find(ty);};break;
-		}
+			case BEERENSTRAUCH:if(Stoff[BEEREN]==0)
+					{ Stoff[BEEREN]+=2;
+					  ty=welt.area[basic.ax+tab100[basic.ay]].ObjektNum;
+					  pflanz[ty].Stoff[BEEREN]--;
+	   				  if(pflanz[ty].Stoff[BEEREN]<=0)
+					  {
+						 welt.area[basic.ax+tab100[basic.ay]].ObjektNum=0; 
+						 welt.area[basic.ax+tab100[basic.ay]].ObjektArt=0;
+						 pflanz[ty].basic.vorhanden=0;
+					  }			
+					};
+				gotoxy(haus[home].basic.ax,haus[home].basic.ay);break;
+ 			case HAUS:if(welt.area[basic.ax+tab100[basic.ay]].ObjektNum==home)
+					  {
+						for(ty=1;ty<3;ty++) if(Stoff[ty]>0)
+						{haus[home].Stoff[ty]+=Stoff[ty];Stoff[ty]=0;} //Rucksack entleeren, Sachen abliefern
+						if(hunger>200) 
+						{
+						if(haus[home].Stoff[BEEREN]-10<hunger/25) {hunger-=(haus[home].Stoff[BEEREN]-10)*25;haus[home].Stoff[BEEREN]=10;}
+						else {haus[home].Stoff[BEEREN]-=hunger/25;hunger=hunger%25;} // Essen fassen
+						}
+						if(haus[home].Stoff[2]>haus[home].Stoff[1]) Find(1);else Find(2); // In den Vorratskeller schauen, was fehlt
+						
+					  }
+				else gotoxy(haus[home].basic.ax,haus[home].basic.ay);
+				break;
+			case 0:if(laenge==0)  // Steht Einheit rum?
+				   {
+					  if((home==0)&&(Stoff[HOLZ]>=10)) Neues_Haus();
+ 					  else if((home>0)&&(hunger>100))
+						{
+						  if(Stoff[BEEREN]==0) 
+					   	  gotoxy(haus[home].basic.ax,haus[home].basic.ay);
+						  else {hunger-=Stoff[BEEREN]*25;Stoff[BEEREN]=0;}
+ 						}
+					  else if((home>0)&&(hunger<100)) gotoxy(haus[home].basic.ax,haus[home].basic.ay);
+					  
+				   }
+				break;
+				}
+	alter++;
+	if(alter==1000)
+	{
+		stop();
+		if(home!=0) haus[home].bewohner--;
+		basic.vorhanden=0;
+	}
 };
 
-void Pathfinding::Next_action()
+/*void Pathfinding::Next_action()
 {
 int ty,min,best;
 	min=10;
@@ -326,7 +413,7 @@ int ty,min,best;
 	for(ty=0;ty<2;ty++)
 		if(haus[home].Stoff[ty]<min) {min=haus[home].Stoff[ty];best=ty;}
 	if(best==255) wait=64; else Find(best);
-};
+};*/
 
 
 /*	switch(welt.objekt[basic.ax+tab100[basic.ay]])
@@ -410,7 +497,8 @@ void Pathfinding::schritt(int wer)
 			&&(welt.area[basic.ax+wegx[wegp]+tab100[basic.ay+wegy[wegp]]].Besetzt>0))
 			{
 			if(leut[welt.area[basic.ax+gx+tab100[basic.ay+gy]].Besetzt].laenge>0) /*gotoxy(cx,cy)*/ // Steht das Ziel still?
-			 wait++;
+			 wait++;//Nein? dann warten
+			else gotoxy(cx,cy);//Es steht still... also neuen Weg finden
 			} else wait=0;
 			if(wait==0)
 			{
@@ -419,10 +507,10 @@ void Pathfinding::schritt(int wer)
 			{
 				phase++;
 				if(phase>7) phase=0;
-				basic.px+=gx;
-				basic.py+=gy;
+				basic.px+=gx*2;
+				basic.py+=gy*2;
 			}
-			} else if(wait>60) stop();
+			} else if(wait>60) gotoxy(cx,cy);
 	}
 		else feld(wer);
 			besetzen(wer);

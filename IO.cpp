@@ -28,7 +28,8 @@ void Input::Scroll(char direction)
 
 void Input::Scroll_mouse()
 {
-		if((xPos>=graph.randl+32)&&(xPos<=graph.randr-32)&&(yPos>=graph.rando+32)&&(yPos<=graph.randu-32))
+	if(((xPos>=graph.randl+32)&&(xPos<=graph.randr-32)&&(yPos>=graph.rando+32)&&(yPos<=graph.randu-32))||((startsx!=0)||(startsy!=0))||(Rahmen==1))
+
 		{
 			if(sx>0) sx-=4; else if(sx<0) sx+=4;
 			if(sy>0) sy-=4; else if(sy<0) sy+=4;
@@ -92,7 +93,7 @@ void Input::Move(unsigned int lParam)
 	{
 		akfeinx=(-(xPos-startsx)/2-(yPos-startsy));
 		akfeiny=((xPos-startsx)/2-(yPos-startsy));
-		akscrollx=akfeinx/8+startscx;akfeinx=(akfeinx+startfx)%8;
+		akscrollx=akfeinx/8+startscx;akfeinx=(akfeinx+startfx)%8;kjfgjz
 		akscrolly=akfeiny/8+startscy;akfeiny=(akfeiny+startfy)%8;
 	}
 	Calculate_KPos();
@@ -116,6 +117,7 @@ void Input::LDown()
 		RStartY=yPos;
 		Rahmen=1;	
 	}
+	InAction=1;	
 };
 void Input::LUp()
 {
@@ -134,9 +136,11 @@ void Input::LUp()
 	if((tx!=RStartX)&&(ty!=RStartY))
 	{
 		for(xx=0;xx<ANZMANN;xx++) 
+			if(leut[xx].basic.vorhanden==1)
 			if((leut[xx].basic.absx+8>=RStartX)&&(leut[xx].basic.absx+8<=xPos)&&(leut[xx].basic.absy+14>=RStartY)&&(leut[xx].basic.absy-14<=yPos))
 			leut[xx].activ=1;
 	};
+	InAction=0;	
 };
 
 void Input::MUp()
@@ -154,10 +158,10 @@ void Input::MUp()
 				case 3:sprintf(charbuf,"Bin unterwegs!");break;
 				case 4:sprintf(charbuf,"Na guut		  ");break;
 			}
-			//screen.WriteS(screen.BackBuffer,30,500,charbuf,false);
+			screen.WriteS(screen.BackBuffer,30,500,charbuf,false);
 			leut[xx].gotoxy(KxPos,KyPos);
-		
 	}
+	InAction=0;	
 };
 
 void Input::RDown()
@@ -165,8 +169,9 @@ void Input::RDown()
 		startsx=xPos;startsy=yPos;
 		startscx=akscrollx;startscy=akscrolly;
 		startfx=akfeinx;startfy=akfeiny;
+		InAction=1;
 };
 void Input::RUp()
 {
-	startsx=0;startsy=0;
+	startsx=0;startsy=0;InAction=0;
 };

@@ -18,30 +18,32 @@ BOOL Image::DrawSpriteFX(RECT QuellPosition,RECT ZielPosition,EFFECTS effects)
 	ZeroMemory(&ddbltfx,sizeof( ddbltfx ));
     ddbltfx.dwSize = sizeof( ddbltfx);
 	
-	if ( effects.ROTATION == TRUE )
+	if(!effects.STRETCHING)
 	{
-	    ddcaps.dwFXCaps = DDFXCAPS_BLTROTATION;
-		ddbltfx.dwRotationAngle = effects.RotationAngle;
-    }
-	if ( effects.MHORIZONTAL == TRUE )
-	{
-		ddbltfx.dwDDFX = DDBLTFX_MIRRORUPDOWN;
-	}
-	if ( effects.MVERTIKAL == TRUE )
-	{
-		ddbltfx.dwDDFX |= DDBLTFX_MIRRORLEFTRIGHT;
-	}
+	 if ( effects.ROTATION == TRUE )
+	 {
+	     ddcaps.dwFXCaps = DDFXCAPS_BLTROTATION;
+   		 ddbltfx.dwRotationAngle = effects.RotationAngle;
+     }
+	 if ( effects.MHORIZONTAL == TRUE )
+	 {
+ 		 ddbltfx.dwDDFX = DDBLTFX_MIRRORUPDOWN;
+	 }
+	 if ( effects.MVERTIKAL == TRUE )
+	 {
+		 ddbltfx.dwDDFX |= DDBLTFX_MIRRORLEFTRIGHT;
+	 }
 
-	if ( effects.NORMAL == TRUE )
-	{
-	  if(FAILED(Ziel->Blt(&ZielPosition,Quelle,&QuellPosition, DDBLT_KEYSRC |
+	 if ( effects.NORMAL == TRUE )
+	 {
+	   if(FAILED(Ziel->Blt(&ZielPosition,Quelle,&QuellPosition, DDBLT_KEYSRC |
 												DDBLT_ASYNC , NULL )))
-	  {
-	   	return Fail("Sprite::DrawSpriteFX");
-	  }
-	}
+	   {
+	   	 return Fail("Sprite::DrawSpriteFX");
+	   }
+	 }
 	
- 	 if (effects.NORMAL = FALSE) 
+	 if (effects.NORMAL = FALSE) 
 	 {
 	   if(FAILED(Ziel->Blt(&ZielPosition,Quelle,&QuellPosition,DDBLT_DDFX | DDBLT_KEYSRC |
 												DDBLT_ASYNC , &ddbltfx )))
@@ -49,11 +51,20 @@ BOOL Image::DrawSpriteFX(RECT QuellPosition,RECT ZielPosition,EFFECTS effects)
 	   	return Fail("Sprite::DrawSpriteFX");
 	   }
 	 }
+	}
+    else
+	{
+	 if( effects.STRETCHING==TRUE)
+	 {
+       Ziel->Blt( NULL, Quelle, NULL,DDBLT_WAIT, NULL );
+	 }
+	}
+
 	return TRUE;
 }
 
 
-BOOL Image::CreateSprite(DWORD Breite,DWORD Hoehe)
+BOOL Image::CreateSprite(DWORD Breite,DWORD Hoehe,BOOL AndTranslucent)
 {
     
     trans_height = Hoehe;
@@ -85,9 +96,9 @@ BOOL Image::CreateSprite(DWORD Breite,DWORD Hoehe)
     ddsd.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN; 
     ddsd.dwHeight = Hoehe; 
     ddsd.dwWidth = Breite;
-
-    ddsd.ddckCKSrcBlt.dwColorSpaceLowValue = RGB(c_r,c_g,c_b);
-    ddsd.ddckCKSrcBlt.dwColorSpaceHighValue = RGB(c_r,c_g,c_b);
+	
+	ddsd.ddckCKSrcBlt.dwColorSpaceLowValue = 0;//En_Graph.ConvertRGB2DWORD(RGB(c_r,c_g,c_b));
+    ddsd.ddckCKSrcBlt.dwColorSpaceHighValue = 0;//En_Graph.ConvertRGB2DWORD(RGB(c_r,c_g,c_b));
 
 
     if ( FAILED( En_Graph.info.lpDD->CreateSurface( &ddsd, &Quelle, NULL ) ) )
@@ -95,7 +106,16 @@ BOOL Image::CreateSprite(DWORD Breite,DWORD Hoehe)
 		return Fail("SPRITE = CreateSurface" );
 	}
 
+    if(AndTranslucent)
+	{
+	 if ( FAILED( En_Graph.info.lpDD->CreateSurface( &ddsd, &trans_surf, NULL ) ) )
+	 {
+		return Fail("SPRITE = CreateSurface" );
+	 }
+	}
+
 	LoadSprite(Quelle,szImage);
+	if(AndTranslucent){ LoadSprite(trans_surf,szImage); }
 
 	return TRUE;
 
@@ -120,7 +140,7 @@ if ( trans_surf != NULL )
 }
 }
 
-BOOL Image::LoadSprite(LPDIRECTDRAWSURFACE lpDDS, LPSTR szImage )
+BOOL Image::LoadSprite(IDirectDrawSurface *lpDDS, LPSTR szImage )
 {
     
 
@@ -224,44 +244,6 @@ void Image::SetColorKey(int r,int g,int b)
 BOOL Image::PrepareForTranslucent()
 {
     DWORD y;
-	
-	ddcaps.dwSize = sizeof( ddcaps );
-    
-	if ( FAILED( En_Graph.info.lpDD->GetCaps( &ddcaps, NULL ) ) )
-	{
-        return Fail("Couldn't get caps.\n" );
-    }
-
-    ddsd.dwSize = sizeof( ddsd );
-
-    ddpf.dwSize = sizeof( ddpf );
-
-	if ( FAILED( Ziel->GetPixelFormat( &ddpf ) ) )
-	{
-		return Fail("Fehler bei der Abfrage des Pixelformats.\n" );
-	}
-
-    dwGreen = ddpf.dwGBitMask;
-    dwBlue = ddpf.dwBBitMask;
-    
-
-    ddsd.dwFlags = DDSD_CAPS | DDSD_HEIGHT | 
-		           DDSD_WIDTH | DDSD_CKSRCBLT; 
-
-    ddsd.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN; 
-    ddsd.dwHeight = trans_height; 
-    ddsd.dwWidth = trans_width;
-
-    ddsd.ddckCKSrcBlt.dwColorSpaceLowValue = RGB(c_r,c_g,c_b);
-    ddsd.ddckCKSrcBlt.dwColorSpaceHighValue = RGB(c_r,c_g,c_b);
-
-
-    if ( FAILED( En_Graph.info.lpDD->CreateSurface( &ddsd, &trans_surf, NULL ) ) )
-	{
-		return Fail("SPRITE = CreateSurface" );
-	}
-	
-	LoadSprite(trans_surf,szImage);
 
 	for (y=0;y<trans_width;y+=2)
 	{
@@ -299,32 +281,20 @@ void Image::DrawArray2(int y)
 		En_Graph.PutPixel(trans_surf,i,y);
 	}
 }
-/*
-void AlphaBlendingRectangle(int x1, int y1, int x2, int y2, COLORREF Rectangle, float Alpha)
+
+void Image::SetSpriteMap(RECT s[MAXSPRITESONMAP])
 {
- int  i,j;
- COLORREF  Background;
- BYTE BackBlue, BackRed, BackGreen;
- BYTE RectBlue, RectRed, RectGreen;
- BYTE NewBlue, NewRed, NewGreen;
+	CopyMemory(sprites,s,sizeof(s));
+}
 
- // Get the Values of the Color specified...
- RectRed = GetRValue(Rectangle); RectBlue = GetBValue(Rectangle); RectGreen = GetGValue(Rectangle);
- // Compute and paint all...
- for(i=0; i<x2-x1; i++)
- {              
-  for(j=0; j<y2-y1; j++)
-  {
-   // Get the Values of the Background...
-   Background = GetPixel(hdc, x1+i, y1+j);
-   BackRed = GetRValue(Background); BackBlue = GetBValue(Background); BackGreen = GetGValue(Background);
-   // Compute the new percantage of colors...
-   NewRed = (1.0 - Alpha) * BackRed + Alpha * RectRed;
-   NewGreen = (1.0 - Alpha) * BackGreen + Alpha * RectGreen;
-   NewBlue = (1.0 - Alpha) * BackBlue + Alpha * RectBlue;
-   // Paint it...
-   SetPixelV(hdc, x1+i, y1+j, RGB(NewRed, NewGreen, NewBlue));
-  }    
- }       
-} /* AlphaBlendingRectangle */
-
+BOOL Image::DrawSpriteMap(int x,int y,int number)
+{
+    
+	if(FAILED(Ziel->BltFast(x,y,Quelle,&sprites[number],DDBLTFAST_WAIT | DDBLTFAST_SRCCOLORKEY)))
+	{
+		return Fail("Sprite::DrawSprite");
+	}
+	xPos = x;
+	yPos = y;
+	return TRUE;
+}

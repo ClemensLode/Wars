@@ -1,150 +1,159 @@
 #include "engine.h"
 #include "wave.h"
 
-BOOL Engine_Sound::InitDirectSound(int channels,int khz,int bits)
+BOOL Engine_Sound::InitDirectSound(BOOL CreatePrimary3D,int channels,int freq,int bits)
 {
+   if(!CreatePrimary3D)
+   {
+	   DirectSoundCreate( NULL, &info.lpDS, NULL );
+       info.lpDS->SetCooperativeLevel( info.hwnd, DSSCL_NORMAL );
+   }
+   else
+   {
+	   DirectSoundCreate( NULL, &info.lpDS, NULL );
+	   info.lpDS->SetCooperativeLevel( info.hwnd, DSSCL_PRIORITY );
 
-    if ( FAILED( hr = DirectSoundCreate( NULL, &info.lpDS, NULL ) ) )
-        return FALSE;
+       ZeroMemory( &dsbdesc, sizeof( DSBUFFERDESC ) );
+       dsbdesc.dwSize = sizeof( DSBUFFERDESC );
+       dsbdesc.dwFlags = DSBCAPS_CTRL3D | DSBCAPS_PRIMARYBUFFER;
+       if ( FAILED( info.lpDS->CreateSoundBuffer( &dsbdesc, &Primaer, NULL ) ) )
+            return FALSE;
 
-    if ( FAILED( hr = info.lpDS->SetCooperativeLevel( info.hwnd, DSSCL_PRIORITY ) ) )
-        return FALSE;
+	   memset( &wfm, 0, sizeof( WAVEFORMATEX ) ); 
+       wfm.wFormatTag = WAVE_FORMAT_PCM; 
+       wfm.nChannels = channels; 
+       wfm.nSamplesPerSec = freq; 
+       wfm.wBitsPerSample = bits; 
+       wfm.nBlockAlign = wfm.wBitsPerSample / 8 * wfm.nChannels;
+       wfm.nAvgBytesPerSec = wfm.nSamplesPerSec * wfm.nBlockAlign;
 
-    dscaps.dwSize = sizeof( DSCAPS );
-    hr = info.lpDS->GetCaps( &dscaps );
+	   Primaer->SetFormat( &wfm ); 
 
-    memset(&dsbdesc,0,sizeof( DSBUFFERDESC ));
-    dsbdesc.dwSize = sizeof( DSBUFFERDESC );
-	dsbdesc.dwFlags = DSBCAPS_PRIMARYBUFFER;
-	dsbdesc.dwBufferBytes = 0;
-	dsbdesc.lpwfxFormat = NULL;
-
-	memset( &wfm,0,sizeof( WAVEFORMATEX ));
-	wfm.wFormatTag = WAVE_FORMAT_PCM;
-	wfm.nChannels = channels;
-	wfm.nSamplesPerSec = khz;
-	wfm.wBitsPerSample = bits;
-	wfm.nBlockAlign = wfm.wBitsPerSample / 8 * wfm.nChannels ;
-	wfm.nAvgBytesPerSec = wfm.nSamplesPerSec * wfm.nBlockAlign ;
-
-    hr = info.lpDS->CreateSoundBuffer( &dsbdesc,&Primaer,NULL);
-
-	if (SUCCEEDED(hr))
-	{
-		hr = Primaer->SetFormat( &wfm );
-	}
-
-	return TRUE;
+       if ( FAILED( Primaer->QueryInterface( 
+		      IID_IDirectSound3DListener,
+              ( LPVOID * )&Listener ) ) )
+	   {
+		  Primaer->Release();  
+		  return FALSE;
+	   }
+    
+	   Primaer->Release();
+   }
+		
+return TRUE;
 }
 
 void Engine_Sound::ReleaseObjects()
 {
-    if ( info.lpDS != NULL )
-    {
-        if ( Primaer != NULL )
-        {
-            Primaer->Release();
-            Primaer = NULL;
-        }         
-		info.lpDS->Release();
-        info.lpDS = NULL;
-	}
+   RELEASE(this->Listener);
+   RELEASE(info.lpDS);
 }
 
-BOOL Engine_Sound::LoadStatic(LPSTR lpzFileName)
+void Engine_Sound::LoadStatic(LPDIRECTSOUNDBUFFER *buffer,char* filename)
 {
-	WAVEFORMATEX  *pwfx;         
-	HMMIO         hmmio;          
-	MMCKINFO      mmckinfo;      
-	MMCKINFO      mmckinfoParent; 
+	HMMIO wavefile;
+	wavefile = mmioOpen(filename,0,MMIO_READ|MMIO_ALLOCBUF);
+	if(wavefile==NULL) 
+		return ;
+	
+	MMCKINFO parent;
+	memset(&parent,0,sizeof(MMCKINFO));
+	parent.fccType = mmioFOURCC('W','A','V','E');
+	mmioDescend(wavefile,&parent,0,MMIO_FINDRIFF);
 
-    if ( WaveOpenFile( lpzFileName, &hmmio, &pwfx, &mmckinfoParent ) != 0 )
-        return FALSE;
- 
-    if ( WaveStartDataRead( &hmmio, &mmckinfo, &mmckinfoParent ) != 0 )
-        return FALSE;
+	MMCKINFO child;
+	memset(&child,0,sizeof(MMCKINFO));
+	child.fccType = mmioFOURCC('f','m','t',' ');
+	mmioDescend(wavefile,&child,&parent,0);
 
- 
- 
-    DSBUFFERDESC         dsbdesc;
+	WAVEFORMATEX wavefmt;
+	mmioRead(wavefile,(char*)&wavefmt,sizeof(wavefmt));
+	if(wavefmt.wFormatTag != WAVE_FORMAT_PCM)
+		return ;
 
 
-    if ( Static == NULL )
-    {
-        memset( &dsbdesc, 0, sizeof( DSBUFFERDESC ) ); 
-        dsbdesc.dwSize = sizeof( DSBUFFERDESC ); 
-        dsbdesc.dwFlags = DSBCAPS_STATIC; 
-        dsbdesc.dwBufferBytes = mmckinfo.cksize;  
-        dsbdesc.lpwfxFormat = pwfx; 
- 
-        if ( FAILED( info.lpDS->CreateSoundBuffer( 
-                &dsbdesc, &Static, NULL ) ) )
-        {
-            WaveCloseReadFile( &hmmio, &pwfx );
-            return FALSE; 
-        }
-    }
+	mmioAscend(wavefile,&child,0);
+	child.ckid = mmioFOURCC('d','a','t','a');
+	mmioDescend(wavefile,&child,&parent,MMIO_FINDCHUNK);
 
-    LPVOID lpvAudio1;
-    DWORD  dwBytes1;
 
-	if ( FAILED( Static->Lock(
-        0,           
-        0,            
-        &lpvAudio1,      
-                       
-        &dwBytes1,     
-        NULL,            
-                      
-        NULL,         
-        DSBLOCK_ENTIREBUFFER ) ) )  
-    {
-      
-        WaveCloseReadFile( &hmmio, &pwfx );
-        return FALSE;
-    }
- 
-    UINT cbBytesRead;
- 
-	if ( WaveReadFile( hmmio,    
-		    dwBytes1,            
-			( BYTE * )lpvAudio1,  
-			&mmckinfo,            
-			&cbBytesRead ) )     
-                              
-    {
-       
-        WaveCloseReadFile( &hmmio, &pwfx );
-        return FALSE;
-    }
+	DSBUFFERDESC bufdesc;
+	memset(&bufdesc,0,sizeof(DSBUFFERDESC));
+	bufdesc.dwSize = sizeof(DSBUFFERDESC);
+	bufdesc.dwFlags = DSBCAPS_CTRLDEFAULT;
+	bufdesc.dwBufferBytes = child.cksize;
+	bufdesc.lpwfxFormat = &wavefmt;
+	if(DS_OK != (info.lpDS->CreateSoundBuffer(&bufdesc,&(*buffer),NULL)))
+		return ;
+	
+	void *write1=0,*write2=0;
+	unsigned long length1,length2;
+	(*buffer)->Lock(0,child.cksize,&write1,&length1,&write2,&length2,0);
+	if(write1>0)
+		mmioRead(wavefile,(char*)write1,length1);
+	if(write2>0)
+		mmioRead(wavefile,(char*)write2,length2);
+	(*buffer)->Unlock(write1,length1,write2,length2);
 
-    Static->Unlock( lpvAudio1, dwBytes1, NULL, 0 );
-
-    WaveCloseReadFile( &hmmio, &pwfx );
-
-    return TRUE;
-    this->datei = lpzFileName;
+	mmioClose(wavefile,0);
+return ;
 }
 
-void Engine_Sound::PlayStatic(void)
+void Engine_Sound::PlayStatic(IDirectSoundBuffer *snd,BOOL loop)
 {
-    HRESULT hr;
+   snd->SetCurrentPosition( 0 );
+   if(!loop) 
+	   snd->Play(0,0,0);   
+   else
+	   snd->Play(0,0,DSBPLAY_LOOPING);
+}  
 
-    if ( Static == NULL ) return;
-
-    Static->SetCurrentPosition( 0 );
-    hr = Static->Play( 0, 0, 0 );   
-    if ( hr == DSERR_BUFFERLOST )
-    {
-        if ( SUCCEEDED( Static->Restore() ) )
-        {
-           if ( LoadStatic( datei ) )
-                Static->Play( 0, 0, 0 );
-        }
-    }
+void Engine_Sound::PanMove(IDirectSoundBuffer *buffer,int dir)
+{
+	LONG pan;
+	buffer->GetPan(&pan);
+	if(dir==PANPLUS) 
+		buffer->SetPan(pan+10);
+    else
+		buffer->SetPan(pan-10);
 }
 
-BOOL Engine_Sound::LoadStreamBuffer(LPSTR lpzFileName )
+void Engine_Sound::VolumeMove(IDirectSoundBuffer *buffer,int dir)
+{
+	LONG vol;
+	buffer->GetVolume(&vol);
+	if(dir==VOLPLUS)
+		buffer->SetVolume(vol+10);
+	else
+		buffer->SetVolume(vol-10);
+}
+
+void Engine_Sound::Stop(IDirectSoundBuffer *snd)
+{
+	snd->Stop();
+}
+
+void Engine_Sound::FreqMove(IDirectSoundBuffer *buffer,int dir)
+{
+	DWORD freq;
+	buffer->GetFrequency(&freq);
+	if(dir==FREQPLUS) 
+		buffer->SetFrequency(freq+500);
+    else
+		buffer->SetFrequency(freq-500);
+}
+
+void Engine_Sound::TurnSound(IDirectSoundBuffer *buffer,int dir)
+{
+	DWORD pos;
+	buffer->GetCurrentPosition(&pos,NULL);
+	if(dir==TURNPLUS)
+		buffer->SetCurrentPosition(pos+10);
+	else
+		buffer->SetCurrentPosition(pos-10);
+}
+
+BOOL Engine_Sound::LoadStreamBuffer(IDirectSoundBuffer *lpdsb,LPSTR lpzFileName )
 {
     DSBUFFERDESC    dsbdesc;
     HRESULT         hr;
@@ -159,13 +168,11 @@ BOOL Engine_Sound::LoadStreamBuffer(LPSTR lpzFileName )
         lpdsb = NULL;
     }
 
-    // Datei öffnen, Datenformat lesen und weiter bis zum data-Chunk
     if ( WaveOpenFile( lpzFileName, &hmmio, &pwfx, &mmckinfoParent ) != 0 )
         return FALSE;
     if ( WaveStartDataRead( &hmmio, &mmckinfo, &mmckinfoParent ) != 0 )
         return FALSE;
 
-    // Sekundären Puffer mit 2 Sekunden Spieldauer anlegen
     memset( &dsbdesc, 0, sizeof( DSBUFFERDESC ) ); 
     dsbdesc.dwSize = sizeof( DSBUFFERDESC ); 
     dsbdesc.dwFlags = DSBCAPS_GETCURRENTPOSITION2 
@@ -188,7 +195,7 @@ BOOL Engine_Sound::LoadStreamBuffer(LPSTR lpzFileName )
     return TRUE;
 }
 
-BOOL Engine_Sound::PlayStreamBuffer(void)
+BOOL Engine_Sound::PlayStreamBuffer(IDirectSoundBuffer *lpdsb)
 {
 	HRESULT         hr;
     DWORD           dwPlay;
@@ -278,12 +285,16 @@ BOOL Engine_Sound::FillBufferWithSilence( IDirectSoundBuffer *lpDsb )
 
 void Engine_Sound::CheckHardware(DS_DRIVERINFO ds_dinf)
 {
+	IDirectSound *dstemp;
+
+	DirectSoundCreate(NULL,&dstemp,NULL);
+	
 	ds_dinf.HW_EMULDRIVER=FALSE;ds_dinf.HW_MSCERTIFIED=FALSE;ds_dinf.HW_PB16=FALSE;
 	ds_dinf.HW_PB8=FALSE;ds_dinf.HW_PMONO=FALSE;ds_dinf.HW_PSTEREO=FALSE;ds_dinf.HW_SB16=FALSE;
 	ds_dinf.HW_SB8=FALSE;ds_dinf.HW_SMONO=FALSE;ds_dinf.HW_SSTEREO=FALSE;
 
 	dscaps.dwSize = sizeof(dscaps);
-	info.lpDS->GetCaps(&dscaps);
+	dstemp->GetCaps(&dscaps);
 
 	if(dscaps.dwFlags & DSCAPS_CERTIFIED) ds_dinf.HW_MSCERTIFIED = TRUE;
 	if(dscaps.dwFlags & DSCAPS_EMULDRIVER) ds_dinf.HW_EMULDRIVER = TRUE;
@@ -295,4 +306,8 @@ void Engine_Sound::CheckHardware(DS_DRIVERINFO ds_dinf)
 	if(dscaps.dwFlags & DSCAPS_SECONDARY8BIT) ds_dinf.HW_SB8 = TRUE;
 	if(dscaps.dwFlags & DSCAPS_SECONDARYMONO) ds_dinf.HW_SMONO = TRUE;
 	if(dscaps.dwFlags & DSCAPS_SECONDARYSTEREO) ds_dinf.HW_SSTEREO = TRUE;
+    
+	dstemp->Release();
 }
+
+
