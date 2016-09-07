@@ -1,0 +1,1461 @@
+Regelbuch, Version Alpha 0.02
+
+
+
+-------> S T E C K B R I E F <----------
+
+Titel:  WARS!
+Genre: Mix aus Aufbau-Spiel,Echtzeitstrategie,Rollenspiel,
+       Adventure und Wirtschaftssimulation
+Hersteller: CLAW-Software
+Vermarktung: In Verhandlung mit Sierra.
+Grafik: Aufloesungen 640*480, 800*600, 1024*768(u.u. auch 1280*1024)
+	Farbtiefe : 8 Bit also 256 Farben(u.u. auch 16 Bit)
+Ziel des Spiels: Weltherrschaft ihres Volkes. Doch geben Sie auf die "Fremden"
+		 acht!
+Features: - Komplettes Wirtschaftsystem. Jeder Einwohner wirtschaftet
+	    selbst und kommt ihnen u.u. sogar in die Quere.
+	  - Mehrere Spielmodi, wie
+	    Einzelkaempfermodus (a la Diablo),
+	    Doerflermodus(Vom Doerfler bis zum Handelsherrn),
+	    Handelsherrenmodus(Bringen sie ihr Volk zu einem Wirtschaftlichen
+			       Aufschwung)
+	    Feldherrnmodus(Der Ultimative Modus, bei dem Sie einen Grossteil
+			   der Regeln auswendig wissen sollten)
+	  - Jede Einheit hat eigene Verhaltensweisen, die nicht nur vom Beruf
+	    abhaengen.
+	  - Wissenschaft: Erforschen Sie die Vegetation, die Rohstoffe, die
+			  Doerfler ...
+Sound: Geplant
+Rassen       : 10+1 Alien Rasse.
+Zahl der Eigenschaften pro Einheit: >50
+Pflanzenarten:>40
+Tierarten    :>20
+(Roh-)Stoffe       : >120.
+Berufsgruppen: Noch nicht bekannt. Mindestens 60.
+	       Jeder Dorfbewohner waehlt Beruf selbst.
+Haeusertypen: 9 verschiedene Bauqualitaeten (Leder,Holz,Stein,etc.)*
+	      bis zu 6 Erweiterungsstufen*
+	      40 Gebaeude mit verschiedenen Funktionen
+Lauffaehig ab: Noch unbekannt. Wahrscheinlich P-133 mit 16 MB RAM.
+Betriebssystem: DOS, um schnelle Grafikdarstellung zu ermoeglichen.
+Programmiersprache: TURBO-PASCAL 7.0
+Erscheinungstermin: Mitte '98
+Vorraussichtlicher Preis: Noch unbekannt.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Uebersicht ueber die Regeln:
+
+1.0. Grundlegendes
+
+Leider kann hier nur eine kleine Uebersicht ueber die Regeln gegeben werden,
+da diese etwas laenger sind und einige noch nicht feststehen...
+
+1.1. Dorf
+
+Ein zentraler Gegenstand in WARS! ist das Dorf. Es expansiert durch ihre
+Bewohner eigenstaendig, doch eine Hilfe von aussen ist unter Umstaenden
+positiv. Die Doerfler sind fuer ihre eigenen Vorhaben von unersetzbaren
+Wert: Arbeitskraefte. Sie muessen sie in Schulen trainieren und dann
+gezielt in ihren Arbeitsstaetten einsetzen. Sie bezahlen ihnen Lohn, den
+sie zum Teil in verschiedene Luxuswaren, aber auch Essen und Wohnung stecken.
+Dadurch bekommen Sie ihr Geld wieder zurueck...
+Jeder einzelne Bewohner hat bestimmte Eigenschaften:
+Gottesfuerchtigkeit,Prunksucht,Familiensinn,Ehrgeiz,Schlaf,Lerneifer, ...
+Die einzelnen Eigenschaften geben an, wieviel Zeit und Geld Sie in die
+jeweiligen Bereiche stecken. Ein hoher Gottesfuerchtigkeitwert wuerde heissen,
+dass sich der- oder diejenige laenger im Tempel aufhaelt und dort mehr
+spendet. Ein hoher Ehrgeizwert heisst, dass sich der Doerfler moeglichst
+viel als Ersparnisse zuruecklegt, damit er spaeter sich selbstaendig machen
+kann. Dadurch kann er natuerlich Ihnen ziemlich in die Quere kommen.
+Ein Doerfler der sich z.B. eine Holzfaellerhuette baut, verdient dann,
+durch den Verkauf des Holzes am Markt, mehr Geld und kuendigt seinen aktuellen
+Job. Das kann der Grundstein fuer einen langen Preiskrieg sein...
+
+1.2. Strategie,Taktik und Totschlag
+
+Zu ruhmreichen Schlachten kommt es in WARS! eher selten... Da ihre Einheiten
+(die natuerlich alle aus dem Dorf stammen) natuerlich frei ausruestbar sind
+und sie zwischen den Einwohnern die besten herausfischen koennen, bleibt viel
+Platz fuer Spezialauftraege. Die Talentwerte wie auch die Kampfwerte steigen
+nur bei Benutzung, eine Schule fuer Kaempfer gibt es (am Anfang) noch nicht.
+Dazu muss erst ein entsprechend guter Soldat hergenommen werden, der dann
+Neulinge unterrichtet. Da sich Einheiten im Terrain gut verstecken koennen,
+sind Meuchelmoerder keine Seltenheit.
+Aber es gilt immer: Ohne eine gut funktionierende Wirtschaft und einem
+zufriedenen, Soldaten lieferndes, Dorf kann kaum eine Armee aufgebaut werden.
+Im spÑteren Spiel kînnen auch Armeen sowie Gebaeude automatisieren. Ein
+Berater Åbernimmt also die Aktionen.
+
+1.3. AbhÑngigkeiten im Wirtschaftsystem
+
+In einem fortgeschrittenem Dorf gibt es viele AbhÑngigkeiten. Ein Beispiel
+soll dies verdeutlichen:
+
+Sie besitzen eine Erz- und eine Kohlemine. Ausserdem haben Sie einen Bauernhof.
+In einer geheimen Hîhle haben einer ihrer Helden ein paar Dutzend Ringe
+ohne besondere Funktion, aber mit hohem Wert gefunden.
+In der Erz- und Kohlemine, sowie im Bauernhof arbeiten Arbeiter aus dem Dorf.
+Diese mÅssen vorher in einer Schule eine Ausbildung hinter sich haben, da
+sich weder Erz noch Kohle ohne Vorwissen abgebaut werden kînnen (wenn die
+Kohle dannach noch verwendet werden soll). Sie mÅssen den Arbeitern
+entsprechend ihres Wissens Lohn bezahlen. einen Teil diesen Lohnes geben die
+Arbeiter am Marktplatz, an dem Sie ihre Nahrung vom Bauernhof verkaufen,
+wieder aus. Ausserdem mÅssen sie die Miete fÅr ihre Wohnung bezahlen.
+Den Rest des Geldes kînnen die Einwohner sparen, in den Tempel geben,
+SchmuckstÅcke (wie z.B. ihre Ringe) kaufen, sich fortbilden etc.
+Ausser die Ersparnisse fliessen die ausgegebenen Gelder normalerweise an Sie
+zurÅck. Doch eben diese Ersparnisse werden fÅr ein eigenes Haus, einem
+Unternehmen oder einer KampfausrÅstung ausgegeben. Auf jedenfall haben Sie
+sowohl mit armen so wie auch mit reichen Einwohnern Vorteile wie Nachteile.
+Die armen werden ihnen durch ihre minimalen Ersparnisse kaum in die Quere
+kommen. DafÅr kînnen sie sich kaum Bildung leisten (ausser sie geben die
+Schulen frei fÅr jeden) und sie werden kaum Geld fÅr Luxuswaren und Tempel
+ausgeben, was deren GlÅcklichkeit senkt.
+Von reichen Einwohner dagegen, erhalten Sie kein Geld fÅr eine Wohnung
+(eigenes Haus!) und Sie mÅssen ihnen mehr Geld fÅr geleistete Arbeit geben.
+DafÅr kaufen sich diese mehr Luxuswaren, aber eben auch herstellende
+GebÑude und eigene HÑuser. Sehr reiche Einwohner werden dadurch zu
+Unternehmern, gegen die Sie durch Preiskriege oder militÑrisches Eingreifen
+ruinieren kînnen. Ersteres freut natÅrlich den Rest Einwohner und haben mehr
+Geld. Letzteres wirkt sich nicht gerade positiv auf ihre GlÅcklichkeit aus.
+Wenn Sie es Åbertreiben, dann werden Sie verbannt. Alle (unglÅcklichen)
+Einwohner sind dann so aufgebracht, da· sie Hammer und Beil nehmen und
+auf ihre Festung stÅrmen.
+
+1.4. Lehre und Ausbildung
+
+Im Gegensatz zu allen bisher erschienen Echtzeitstrategiespielen fangen Sie
+in WARS! bei 0 an. Alle Einwohner, bis auf wenige Ausnahmen, sind absolut
+strohdumm. Deren Talente kînnen anfangs nur durch Anwendung, wie z.B. Kampf,
+erhîht werden. Nach einer Zeit haben Sie einigermassen gute KÑmpfer und Sie
+fischen den besten heraus und stecken ihn in eine Kaserne, in der er seine
+Erfahrungen und sein Wissen weitergibt. Genauso funktioniert es bei
+allen anderen Talenten.
+NatÅrlich geben auch VÑter und MÅtter ihr Wissen in begrenztem Ma·e an ihre
+Kinder weiter.
+Im spÑteren Spiel sind ihre Einwohner Spezialisten in ihren FÑchern.
+NatÅrlich gibt es auch eine Wissenschaft deren Erforschungsmîglichkeit sich
+auf 2 Bereiche beschrÑnkt:
+In der Alchimistenzunft werden neue Stoffe aus der Natur hingebracht und dort
+erforscht, damit dieser Stoff verwendbar wird.
+Sie kînnen ausserdem ihren ProduktionsstÑtten den Auftrag geben, einen
+bestimmten Prozentsatz ihrer Arbeit in Forschung zu setzen. Je ausgebildeter
+und erfahrener die Arbeiter sind, desto eher ist ein Durchbruch zu einer
+neuen Produktionsart moeglich. Sobald dies geschehen ist, koennen Sie meist
+eine neue Art von Gebaeude errichten. Doch wird der Talentwert in diesen
+Haeusern erniedrigt, weil die Arbeiter ja noch nicht mit der neuen
+Produktionstechnik vertraut sind.
+
+
+
+
+
+
+
+Werte, Regeln und spezielle Situationen
+
+
+
+
+1. "Holz, Granit und Zimmerei nun das Haus ein Steinmetz' sei ..."
+
+1.0. Grundlegendes
+Abzuege und Boni zur Produktion, Bezahlung, etc. werden immer relativ zum
+Grundpreis berechnet.
+  >Bsp: Die Restauration wurde 12 Zeiteinheiten nicht bezahlt.
+
+1.1. Aufrechterhaltung der Produktion
+Damit die verschiedenen Betriebe ihre Produktion aufrechterhalten koennen,
+muessen folgende Bedingungen erfuellt sein:
+
+- Es muessen fuer verarbeitende Industrien entsprechende Rohstoffe
+  bereitgestellt werden.
+    >Bsp: Fuer Eisenschmelze wird Kohle und Eisenerz benoetigt.
+- Fuer nur produzierende Industrie muessen passende Gelaendebedingungen
+  vorhanden sein.
+    >Bsp: Fuer Holzfaellerzunft muss ein Wald in der Naehe sein.
+- Es muss ausserdem genuegend Nahrung hergebracht, fuer entsprechende
+  Bezahlung in Goldstuecken und fuer Restaurationsarbeiten gesorgt werden.
+  siehe 2.2. BAUKOSTEN .
+
+Es koennen aber auch Boni auftreten:
+
+- Spezielle Gelaendebedingungen erwirtschaften mehr Ertrag, bringen mehr
+  Effizienz oder einfach einen strategischen Vorteil.
+   >Bsp: Hof -> Ackerland, Holzfaeller -> mitten im Wald, Kaserne -> nahe an
+    der Grenze zum Gegner, usw.
+  Diese Boni ergeben sich automatisch und werden nicht als Produktionsbonus
+  gerechnet.
+- Durch praktische Uebung und Erfahrung steigt die Produktion um bis zu 50%.
+  Diese Erfahrung kann auch in Kasernen und Universitaeten geuebt werden.
+  Sie ist bereits in die Produktionsformel eingearbeitet.
+- Die gesamte Bevoelkerung kann zu einem Heiligen Krieg gewonnen werden.
+  Der Heilige Krieg kann nur in speziellen Situationen ausgerufen werden:
+  - Gegner vernichtet(!) Dorf
+  - Friedensbruch
+  - pure Groesse (viermal so viel Gebaeude, viermal so viel Einwohner)
+  Dies hat mehrere Vorteile :
+  - Erhoehung der Produktion in ALLEN Bereichen um 50%
+  - Sie erhalten unbegrenzte Entscheidungsfreiheit ueber alle ihre Aktionen.
+  - Unruhe wird beseitigt
+  - Soldaten brauchen keinen Sold mehr
+  - Bevoelkerungswachstum +33%
+  Nachteile:
+  - Die Leute benoetigen Nahrung
+  - Nach Ende des Krieges benoetigen ALLE Gebaeude eine Restauration von 33%
+    sonst Regel wie bei Produktion.
+  - Steuerunruhefaktor vervierfacht sich.
+  - Soldaten verlangen doppelten (einmaligen) Sold fuer ihre Taten
+  - Es kann innerhalb der naechsten 2400 Zeiteinheiten KEIN Heiliger Krieg
+    mehr ausgerufen werden (Es ist meist auch nicht mehr noetig)
+
+  Ende des HK:
+  - Zerstoerung(!) der gegnerischen Hauptstadt
+  - Nach 50 Zeiteinheiten beendet sich der HK selbst
+  - Nach 20 Zeiteinheiten nach HK kein einziger Kampf
+
+Bei einer Produktionsrate von 0% muss kein Unterhalt mehr bezahlt werden.
+Es wird automatisch die Arbeit eingestellt und das Gebaeude verwandelt
+sich nach weiteren 40 Zeiteinheiten in eine Ruine.
+Siehe auch Gelaende.
+
+2. Gebaeude
+
+2.1 Bau
+
+Vorraussetzungen fuer den Bau von Gebaeuden :
+- Es muss eine Zimmerei (oder eine Aufwertung der Zimmerei) vorhanden sein.
+- Es muessen genuegend der unten genannten Baumaterialien vorhanden sein.
+- Es muss ein Bauplatz verfuegbar sein.
+
+Als Alternative fuer die Zimmerei koennen auch unausgebildete Leute aus dem
+Dorf die Arbeit erledigen. Durch Mangel an Ausbildung und Werkzeugen
+benoetigt diese Bauweise 4 mal laenger als per Zimmerei und es koennen nur
+Klasse B Gebaeude gebaut werden (bis auf Zimmerei).
+Die arbeitende Bevoelkerung (100) zahlt KEINE Steuern.
+Das zu Bauende Gebaeude sollte eine Zimmerei sein.
+
+2.2 Baukosten
+
+Hier nun die Kosten der einzelnen Gebaeude.
+Die eigentliche Produktion wird mit der Produktion der einzelnen Gebaeude
+multipliziert.                                           Edel-                   Produktions-  ben.
+Klasse   Holz   Stein   Ziegel  Moertel Metall  Glas     metall  Nahrung Bauzeit Faktor Bonus  Wissen
+|  A  |  25*  |  20*  |   -   |   -    | 5    |  -      | -    |   -    |   5   |  1   |  0  |
+|  B  |  40   |  30   |   -   |   -    | 10   |  -      | 10*  |   -    |  10   |  2   |  1  |
+|  C  |  65   |  50   |  25*  |  15*   | 15   |  -      | 25   |   -    |  16   |  4   |  2  |
+|  D  |  90   |  75   |  50   |  30    | 50*  |  -      | 50   |   -    |  28   |  8   |  3  |
+|  E  |  120  |  100  |  75   |  45    | 75   | 35*     | 75   |   -    |  42   | 16   |  5  |
+|  F  |  150  |  125  |  100  |  60    | 100  | 70      | 100  |   -    |  55   | 32   |  10 |
+
+*** Die eigentlich gebrauchten Rohstoffe stehen weiter unten bei Austauschstoffe.
+Die Angabe bei Bauzeit entspricht den Rohstoffen mit einem @
+
+Und hier die Restaurationskosten.
+Waehrrend der Restauration kann NICHT gearbeitet werden (Es muss auch kein
+Unterhalt bezahlt werden.
+
+Klasse   Holz   Granit  Ziegel Moertel  Stahl   Glas    Gold    Nahrung Bauzeit
+|  A  |  7    |  2    |   -   |   -   |  5     |  -    |  -    |   5    |   1   |
+|  B  |  12   |  3    |   -   |   -   | 10     |  -    |  5    |   10   |   1   |
+|  C  |  20   |  5    |  5    |  2    | 15     |  -    |  10   |   20   |   2   |
+|  D  |  27   |  8    |  10   |  3    | 25     |  -    |  25   |   30   |   2   |
+|  E  |  40   |  10   |  15   |  5    | 35     |  15   |  50   |   45   |   3   |
+|  F  |  45   |  12   |  20   |  6    | 50     |  30   |  75   |   60   |   3   |
+
+2.3 Beschreibung aller Gebaeudetypen und deren Aufwertungen
+
+Auflistung :
+
+Bei Funktion ein SP heisst "Speicherung" also dass das Gebaeude diesen Typ von Rohstoff
+lagert.
+Ein VF bedeutet, dass dieser Rohstoff eine Verfeinerung ist.
+WissenALL bedeutet, dass dieses Gebaeude alles moegliche erforscht und in
+jedem Wissensgebiet Fortschritte gemacht werden.
+
+Produktion              Name             Klasse      Aufwertung von    Vorraussetzung
+
+			Koehler            A         -                 -
+Holz,HolzkohleVF        Holzfaellerzunft   B         Koehler           -
+Holz,HolzkohleVF,Baeume Foersterzunft      C         Holzfaellerzunft  -
+Holz,HolzkohleVF,Baeume Saegewerk          D                           -
+Stein                   Steinbruch         A                           -
+Stein                   Granitmetze        B                           -
+Stein                   Basaltbeisser      C                           -
+Lehm                    Lehmgrube          A                           -
+Lehm,ZiegelVF           Maurer             B                           Wasserloch
+Zement,ZiegelVF         Zementmischer      C                           Brunnen
+Zement,ZiegelVF         Ziegelfabrik       D                           Brunnen
+Nahrung,Felle           JÑgerzunft         B                           -
+Nahrung,Felle,LederVF   Gerberzunft        C                           -
+Nahrung,Felle,LederVF   Naturschule        D                           -
+Nahrung,Felle,LederVF   Gro·wildjÑger      E                           -
+Nahrung,Felle,LederVF   Elfenschule        F                           -
+Nahrung                 Fischerzunft       A                           -
+Nahrung,BooteVF         Bootebauerzunft    B                           Werkzeugmacher,HolzfÑller
+Nahrung,BooteVF         Hafen              C                           -
+Nahrung,SchiffeVF       Schiffswerft       D                           SÑgewerk
+Nahrung,SchiffeVF       Seefahrerzunft     E                           Werkzeugfabrik
+Nahrung,SchiffeVF       Kriegshafen        F                           Maschinenfabrik
+WissenSP             Geschichtenerzaehler  A                           -
+WissenSP                Biblothek          B                           -
+WissenSP                Schule             C                           -
+WissenSP                UniversitÑt        D                           -
+WissenSP                Gro·e Biblothek    E                           -
+WibssenALL              Erfinderwerkstatt  C                           -
+WissenALL               Alchimistenzunft   D                           -
+WissenALL               Forschungslabor    E                           -
+Wasser                  Wasserloch         A                           -
+Wasser                  Brunnen            B                           -
+Wasser                  Wasserwerk         C                           -
+Trainingspunkte         Kaserne            B                           -
+Trainingspunkte         KÑmpferzunft       C                           Schmiede
+Trainingspunkte         Trainingslager     D                           Waffenschmiede,Harnischmacher
+Trainingspunkte         Kriegsschule       E                           Gro·schmiede,RÅstnerei,Wagnerei
+Trainingspunkte         Elementarschule    F                           Maschinenfabrik
+Trainingspunkte         Hexenkreis         C                           -
+Trainingspunkte         Druidenzirkel      C                           -
+Trainingspunkte         Magierakademie     D                           UniversitÑt
+Trainingspunkte,Zauber  Magierturm         E                           Grosse Biblothek
+Freude,Traininsp.       Schrein            B                           -
+Freude,Traininsp.       Tempel             C                           -
+Freude,Traininsp.       Panthenontempel    D                           Biblothek
+Freude,Traininsp.       Kathedrale         E                           Schule
+Freude,Traininsp.,WunderTempel des Lichts  F                           UniversitÑt
+NahrungSP               Kornspeicher       B                           -
+NahrungSP               Kornsilo           C                           -
+ALLSP                   Lagerhaus          D                           -
+ALLSP                   Lagerhalle         E                           -
+			Werkzeugmacher     C                           Schmiede
+			Wagnerei           D                           HolzfÑllerzunft
+			Werkzeugfabrik     E                           SÑgewerk,Bogner,Biblothek
+			Maschinenfabrik    F                           Waffenfabrik,RÅstungswerk,Armbruster,Schule
+BoegenVF                Bogner             C                           JÑgerzunft
+ArmbruesteVF            Armbruster         D                           Gro·wildjÑger
+GebaeudeVF              Zimmerei           C                           HolzfÑllerzunft
+GebaeudeVF              Bauarbeiterzunft   D                           SÑgewerk,Werkzeugmacher
+GebaeudeVF              Handwerkerzunft    E                           Werkzeugfabrik,UniversitÑt
+GebaeudeVF              Gro·bauhof         F                           Maschinenfabrik,Gro·e Biblothek
+Nahrung                 Bauernhof          B                           -
+Nahrung,Tiere           Farm               C                           Biblothek
+Nahrung,Tiere           Gro·farm           D                           Schule
+Getreide                Getreidefarm       E                           UniversitÑt
+Reis                    Reisfarm           E                           UniversitÑt
+Mais                    Maisfarm           E                           UniversitÑt
+Schafe                  Schafzucht         E                           UniversitÑt
+Schwine                 Schweinezucht      E                           UniversitÑt
+Karens                  Karenzucht         E                           UniversitÑt
+EisenVF                 Eisenschmelze      C                           -
+StahlVF                 Stahlwerk          D                           -
+StahlVF                 Stahlfabrik        E                           -
+WaffenVF,RuestungenVF   Schmiede           C                           -
+WaffenVF                Waffenschmiede     D         Schmiede          Eisenschmelze
+WaffenVF                Grossschmiede      E                           Stahlwerk
+WaffenVF                Waffenfabrik       F                           Stahlfabrik
+RuestungenVF            Harnischmacher     D         Schmiede          Eisenschmelze
+RuestungenVF            Ruestnerei         E                           Stahlwerk
+RuestungenVF            Ruestungswerk      F                           Stahlfabrik
+Reittiere               Stallungen         B
+Reittiere               Pferdezucht        C
+Reittiere               Animistenzunft     D
+Flugtiere             Uebernat. Stallungen E
+Flugtiere               Horst              F
+Heilung                 Knochenflicker     B
+Heilung                 Medizinmann        C
+Heilung                 Heiler             D
+Heilung                 Anatom             E
+Heilung                 Krankenhaus        F
+Fleisch,                Fleischer          C
+			Weberei            B
+Kalk,MoertelVF          Moertelmischer     B
+Kohle,Gold,Eisen        Bergwerk           C
+
+
+
+2.3.1.C Die Zimmerei
+
+Klasse : C
+Aufwertungen : 3, Bauarbeiterzunft, Handwerkszunft, Grossbauhof
+Vorraussetzungen : KEINE
+Spieltips:
+Die Zimmerei ist das zentrale und wichtigste Gebaeude im Spiel.
+Mit ihr koennen Sie neue Gebaeude erbauen und sie restaurieren.
+Das Primaerziel des Gegner wird ihre Zimmerei sein, da ein Neubau nur durch
+(sehr langsame) Doerfler moeglich ist.
+Besetzung : 1 Zimmerer, Einsatz am Bauplatz
+Produktion:
+1 Baupunkt, zur Produktion von Gebaeuden bis einschliesslich Klasse C.
+Besonderheiten : -
+Einsatzorte: ueberall mit genuegend freier Flaeche, moeglichst nahe an
+Rohstoffquellen
+
+  2.3.1.D Die Bauarbeiterzunft
+
+  Klasse : D
+  Aufwertungen : 2, Handwerkszunft, Grossbauhof
+	  Aufwertung aus Zimmerei.
+  Vorraussetzungen :
+  Spieltips:
+  In der Bauarbeiterzunft werden geschulte Arbeiter zur Konstruktion grosser
+  Gebaeudekomplexen.
+  Besetzung : 2 Bauarbeiter, Einsatz am Bauplatz
+  Produktion:
+  2 Baupunkte, koennen auf 1 BP fuer 2 Baustellen gespalten werden.
+  Besonderheiten : -
+  Einsatzorte: ueberall mit genuegend freier Flaeche, moeglichst nahe an
+  Rohstoffquellen
+
+    2.3.1.E Die Handwerkerzunft
+
+    Klasse : E
+    Aufwertungen : 1, Grossbauhof
+	    Aufwertung aus Bauarbeiterzunft.
+    Vorraussetzungen :
+    Spieltips:
+    Besetzung : 4 Handwerker, Einsatz am Bauplatz
+    Produktion:
+    4 Baupunkte, koennen auf 2 BP fuer 2 Baustellen gespalten werden.
+    Besonderheiten : -
+      Einsatzorte: ueberall mit genuegend freier Flaeche, moeglichst nahe an
+      Rohstoffquellen
+
+      2.3.1.F Der Grossbauhof
+
+      Klasse : F
+      Aufwertungen : -
+	      Aufwertung aus Handwerkerzunft.
+      Vorraussetzungen :
+      Spieltips:
+      Der Grossbauhof ist hauptsaechlich fuer grosse Bauvorhaben konstruiert,
+      da hier ausschliesslich Spezialisten arbeiten.
+      Besetzung : 8 Ingenieure, Einsatz am Bauplatz
+      Produktion:
+      10 Baupunkte, koennen NICHT gespalten werden.
+      Besonderheiten : -
+      Einsatzorte: ueberall mit genuegend freier Flaeche, moeglichst nahe an
+      Rohstoffquellen
+
+2.3.2.A Der Bauernhof
+
+    Klasse : A
+    Aufwertungen : 2, Farm, Grossfarm
+    Vorraussetzungen : KEINE
+    Spieltips:
+    Der Bauernhof ist wichtig fuer die Versorgung aller Gebaeude und Truppen.
+    Eine gute Nahrungsversorgung bildet das Rueckrat ihrer Wirtschaft.
+    Besetzung : 1 Bauer, Einsatz direkt am Bauernhof
+    Produktion:
+    10 Nahrung
+    Besonderheiten : -
+    Einsatzorte: Kaum Ertrag auf Bergen, Huegeln, Eis-
+    oder Wuestenlandschaften.
+    Moeglichst in milden, ebenen Flaechen wie Weideland oder Steppe.
+
+  2.3.2.B Die Farm
+
+      Klasse : B
+      Aufwertungen : 1,Grossfarm
+      Vorraussetzungen :
+      Spieltips:
+      Die Farm produziert wesentlich mehr Nahrung als der Hof. Sobald die
+      Farm verfuegbar ist sollten alte Bauerhoefe schleunigst ersetzt werden.
+      Eine gute Nahrungsversorgung bildet das Rueckrat ihrer Wirtschaft.
+      Besetzung : 2 Bauern, Einsatz direkt am Bauernhof
+      Produktion:
+      25 Nahrung
+      Besonderheiten : -
+
+    2.3.2.C Die Grossfarm
+
+	Klasse : C
+	Aufwertungen : -
+	Vorraussetzungen :
+	Spieltips:
+	Die Grossfarm produziert noch mehr Nahrung als die Farm.
+	Es gilt das bei Farm gesagte.
+	Besetzung : 4 Bauern, Einsatz direkt am Bauernhof
+	Produktion:
+	60 Nahrung
+	Besonderheiten : -
+
+    2.3.2.C Die Grossfarm
+
+	Klasse : C
+	Aufwertungen : -
+	Vorraussetzungen :
+	Spieltips:
+	Die Grossfarm produziert noch mehr Nahrung als die Farm.
+	Es gilt das bei Farm gesagte.
+	Besetzung : 4 Bauern, Einsatz direkt am Bauernhof
+	Produktion:
+	60 Nahrung
+	Besonderheiten : -
+
+2.3.3.A Das Wasserloch
+
+   Klasse : A
+   Aufwertungen : 2, Brunnen, Wasserwerk
+   Vorraussetzungen : KEINE
+   Spieltips:
+   Auch die Leutchen in diesem Spiel muessen Trinken. In Gebieten ohne See
+   ist es ratsam einen Brunnen zwecks "Nachtankens" zu bauen. Zwar ist es
+   prinzipiell auch moeglich Karawanen zwischen den Gebieten hin und her
+   zu transferieren, aber wenn das Gebiet durch feindliche Einheiten ab-
+   geschnitten wird stehen ihre Leute dumm da.
+   Besetzung : 1 Wasserholer
+   Produktion:
+   unterschiedlich, siehe Besonderheiten
+   Einsatzorte: Ueberall ausser Gebirge und Huegel.
+   Besonderheiten : Die Produktionsmenge entspricht :
+50-Entfernung zum naechsten Wasserfeld-Anzahl Wuestenfelder dazwischen*10
+
+
+2.3.3.B Der Brunnen
+
+   Klasse : B
+   Aufwertungen : 1, Wasserwerk
+		Aufwertung durch Wasserloch
+   Vorraussetzungen :
+   Spieltips:
+   Da der Brunnen ueberall einigermassen Wasser liefert bietet er sich vor
+   allem fuer laendliche Gebiete an.
+   Besetzung : 2 Wasserholer
+   Produktion:
+   25 Wasser+(15-Entfernung zum naechsten Wasserfeld)
+   Einsatzorte: nicht in Gebirgen, Huegeln und Wuesten.
+   Besonderheiten : -
+
+2.3.3.C Das Wasserwerk
+
+   Klasse : C
+   Aufwertungen : Aufwertung durch Brunnen
+   Vorraussetzungen :
+   Spieltips:
+   Das Wasserwerk eignet sich fuer grosse Wasservorkommen wie in Grassland.
+   Besetzung : 4 Wasserholer
+   Produktion: 50 Wasser
+   Einsatzorte: Nur Grassland, Weideland oder Ackerland.
+   Besonderheiten : -
+
+2.3.4.A Die Holzfaellerzunft
+
+   Klasse : A
+   Aufwertungen : 2, Saegewerk, Foersterzunft
+   Vorraussetzungen : KEINE
+   Spieltips:
+   Holz wie Stahl, Granit, Ziegel und Gold sind die wichtigsten Rohstoffe.
+   An Ihnen sollte nie Mangel herrschen. Bauen Sie also moeglichst nah an
+   einem Wald mehrere Holzfaellerzuenfte.
+   Besetzung : 1 Holzfaeller
+   Produktion : 1 Holzbrett
+   Einsatzorte : Ueberall, aber moeglichst an einem Wald
+   Besonderheiten : Die Holzfaellerzunft ist im Notprogramm enthalten.
+
+2.3.4.B Das Saegewerk
+
+   Klasse : B
+   Aufwertungen : 1, Foersterzunft
+		Aufwertung von Holzfaellerzunft
+   Vorraussetzungen :
+   Spieltips:
+   Sobald das Saegewerk verfuegbar ist sollten die alten Holzfaellerzuenfte
+   sofort umgewandelt werden.
+   Besetzung : 2 Holzfaeller
+   Produktion : 2 Holzbretter
+   Einsatzorte : Ueberall, aber moeglichst an einem Wald
+   Besonderheiten : -
+
+2.3.4.C Die Foersterzunft
+
+   Klasse : C
+   Aufwertungen : Aufwertung vom Saegewerk
+   Vorraussetzungen :
+   Spieltips:
+   Wenn die Baumvorkommen knapp werden sollte zur Foersterzunft aufgeruestet
+   werden, da diese die Faehigkeit besitzt neue Baeume anzupflanzen
+   Besetzung : 4 Foerster
+   Produktion : 3 Holzbretter
+   Einsatzorte : Ueberall, aber moeglichst an einem Wald
+   Besonderheiten : Kann neue Baeume pflanzen, die 100 Runden dannach ab-
+   hackbereit sind.
+
+2.3.5.A Die Steinmetze
+
+   Klasse : A
+   Aufwertungen : 1, Steinbruch
+   Vorraussetzungen : KEINE
+   Spieltips:
+   Ebenso wie die Holzfaellerzunft sollte dieses Gebaeude eines der ersten
+   sein, das gebaut wird.
+   Besetzung : 1 Steinmetze
+   Produktion : 2 Granit
+   Einsatzorte : Ueberall, aber moeglichst an einem Granitvorkommen
+   (Gebirge, Huegel,...)
+   Besonderheiten : -
+
+2.3.5.B Der Steinbruch
+
+   Klasse : B
+   Aufwertungen : Aufwertung von Steinmetze
+   Vorraussetzungen :
+   Spieltips:
+   Besetzung : 2 Steinmetzen
+   Produktion : 4 Granit
+   Einsatzorte : Ueberall, aber moeglichst an einem Granitvorkommen
+   (Gebirge, Huegel,...)
+   Besonderheiten : -
+
+2.3.5.B Der Steinbruch
+
+   Klasse : B
+   Aufwertungen : Aufwertung von Steinmetze
+   Vorraussetzungen :
+   Spieltips:
+   Besetzung : 2 Steinmetzen
+   Produktion : 4 Granit
+   Einsatzorte : Ueberall, aber moeglichst an einem Granitvorkommen
+   (Gebirge, Huegel,...)
+   Besonderheiten : -
+
+... *wird fortgesetzt*
+
+3. "Wie teuer kostet der Preis?"
+
+3.0 Grundlegendes
+
+WARS! simuliert ein einfaches Wirtschaftssystem, das auf Menge der
+vorhandenen Gueter und deren Quotienten besteht.
+Ausserdem enthaelt WARS! ein neutrales Volk der Haendler, die als
+Mittelsmaenner zwischen den Zivilisationen gelten. Sie uebrnehmen den
+Transport und die Weitervermarktung und erhalten zusaetzlich einen kleinen
+Lohn.
+
+3.1 Das Handelsprinzip
+
+Der Wirtschaftskreislauf von WARS! wird hier schematisch als Beispiel gezeigt:
+
+Bsp.
+
+Volk A                                          Volk C
+Braucht Eisen                                   Braucht Granit
+Hat Gold            <-->             <-->       Hat Leder
+			 Haendler
+
+			    ^
+			    |
+			    |
+
+		      Braucht Leder
+		      Hat Eisen
+			Volk B
+
+
+
+Ohne den Haendlern koennte hier nur durch zaehes (langwieriges :-( )
+Verhandeln ein Kompromiss hergestellt werden. Auch wenn keiner der Voelker
+einen direkten Handel machen koennen kaufen die Haendler entsprechende
+Rohstoffe bis zu einer Obergrenze (20% der gesamt vorkommenden Rohstoffe).
+fuer spaeter ab.
+Die Formel fuer den Preis von Gueter berechnet sich nach der folgenden Formel
+
+A:Anzahl der Art von Waren, die vom Haendler gekauft werden.
+B:Anzahl der Art von Waren, die dafuer dem Haendler gegeben werden.
+G:Gesamtanzahl im Spiel vorkommenden Waren
+
+A=(GA/GB)*B
+B=(GB/GA)*A
+*schoen nicht? :-)*
+
+3.2 Vorraussetzungen, Eigenschaften und Begrenzungen von Marktplaetzen
+
+-Um Handel zu betreiben muessen Marktplaetze gebaut werden.
+-Die Rohstoffe muessen direkt zum Marktplatz gebracht werden.
+-Neuerworbene Rohstoffe kommen direkt zum Marktplatz.
+-Aufwertungen des Marktplatzes haben einen hoeheren Rohstoffumsatz.
+
+Am Anfang besitzen die Haendler 100 Einheiten jeder Ware.
+
+
+
+3.3 Waehrung
+
+Die annerkannte Waehrungseinheit ist Gold.
+Sie muessen ihren Arbeitern Gold bezahlen.
+Sie verbrauchen benoetigen folgend
+
+
+
+
+Klimastufen
+
+Feuchtigkeit :
+
+A Gleichmaessige hohe Feuchtigkeit
+B Gleichmaessige mittlere Feuchtigkeit
+C 2-3 Regenzeiten
+D 1-2 Regenzeiten
+E kein Regen
+
+Warme :
+
+1 Gleichmaessig heiss (heiss,heiss,warm,heiss)
+2 Ungleichmaessig warm (heiss,warm,mild,warm)
+3 Ungleichmaessig mild (warm,mild,kalt,mild)
+4 Gleichmaessig eisig (kalt,eisig,eisig,eisig)
+5 Ungleichmaessig kalt (mild,kalt,eisig,kalt)
+
+      1                   2                   3               4               5
+A Regenwald          Monsunwaldklima       Waldklima           -              -
+B Monsunwaldklima    Waldklima             Waldklima           -             Waldklima
+C Savanne            Praerie               Waldklima           Tundra         Waldklima
+D Steppe             Savanne               Grassland           Frostklima     Tundra
+E Wuestenklima       Steppe                Steppe        extremes Frostklima  Frostklima
+
+
+
+
+
+
+
+
+
+Zur Karte :
+
+Grundsaetzlich sind die klimatischen Bedingungen aehnlich der Erde :
+Je weiter zum Aequator desto waermer und je weiter zu den Polkappen desto
+kaelter.
+Auf Bergen oder Huegeln ist es entsprechend kaelter :
+1000 m -1Zone; 2000 m -2 Zonen;3000 m -4 Zonen; Hoehere Berge sind unpassierbar.
+
+Sonstiges :
+Angrenzende Felder koennen auf der Tabelle einen Unterschied von max. 1
+haben.
+Auf der Karte kann also z.B. auf ein Feld mit heissem Klima nur (!) ein
+Feld mit warmen Klima folgen.
+
+
+
+
+
+4. Lebenserhaltung
+
+Ihre Mannen benoetigen eine ausgewogene Ernaehrung, ein Dach ueber dem Kopf
+und eine Arbeit.
+
+4.1 Ausgewogene Ernaehrung
+
+Salz
+Brot
+Wasser
+Fruechte
+Gemuese
+Fisch
+Fleisch
+
+5.Rohstoffe und Gelaende
+
+5.1 Rohstoffe
+
+
+Grundname          Arten        Verfeinerung            Verwendung                      Klima
+
+		   Bruchholz    -                       1 Viertel Holzkohle
+Holz               Birkenholz   Holzkohle               (Schiffs-)Bau, 1 halb Holzkohle
+		   Steineiche   2 Holzkohle             (Schiffs-)Bau, Holzkohle
+		   Sandstein
+Stein              Granit
+		   Basalt
+		   Holzkohle    -                       Verbrennung
+Brennmittel        Steinkohle   -                       Verbrennung
+		   Oel          Treibstoff              Antrieb, Verbrennung
+		   Bronze       -                       Waffen
+Metalle            Eisenerz     Eisen,Stahl             Waffen,Gebaeude
+		   Meteoreisen  Meteorstahl             Waffen,Gebaeude
+		   Silber       Silbermuenzen           Zahlungsmittel
+Edelmetalle        Golderz      Goldmuenzen             "
+		   Platin                               ",Waffen
+		   Diamant
+Rohdiamanten       Rubin
+
+		   Weizen                                                       nicht eisig,kalt,s.trocken
+Getreide           Reis                                                         nur warm,heiss,feucht,nass
+		   Mais                                                         nicht eisig,kalt,mild,s.trocken,trocken
+		   Fruechte                                                     nicht eisig,kalt,mild,s.trocken,trocken
+Nahrungsmittel     Gemuese                                                      nicht eisig,kalt,nass,s.trocken,trocken
+		   Fisch                                                        Wasser
+		   Fleisch                                                      Ueberall, siehe Vieh
+		   Suesswasser
+Wasser             Milch
+		   Wein
+		   Hausschwein    2 Fleisch,1 Leder,Knochen
+Vieh               Schaf          1 Fleisch,2 SWolle,Knochen
+		   Karen          4 Fleisch,2 Leder,2 Knochen
+		   Schweinsleder
+Leder              Schwerleder
+		   Iryanleder
+	       /   Schafswolle
+Stoffe     <----   Baumwolle
+	       \   Seide
+
+		   Lehm
+Ziegel             Beton
+		   Kalk
+Feingestein        Quarzsand
+		   Obsidian
+
+		   Knochen
+		   Schwefel
+		   Salz
+		   Teer (Als Stein oder Schwefel)
+		   ...
+
+V bedeutet Veredelung, also kein Vorkommen in der freien Natur.
+Die Angaben treffen auf die meisten Vorkommen zu. Ausnahmen bestaetigen die Regel.
+*Es kann durchaus im Weideland verborgen ein Kohlevorkommen schlummern, aber eben selten ...*
+
+Abstufungen :
+Feuchtigkeit: nass,feucht,normal,trocken,staubtrocken
+Klima       : heiss,warm,mild,kalt,eisig
+Menge       : extrem viel,viel,mehr als normal (MAN),normal,weniger als normal (WAN),wenig,extrem wenig
+Haeufigkeit : sehr haeufig,haeufig,normal,selten,sehr selten
+
+Die Angaben bei Vorkommen beziehen sich auf dem Tageslicht ausgesetzte Vorkommen,
+deshalb gibt es z.B. Sandstein nur in heissen trockenen Gebieten, wo sich
+keine Humusschicht darueber gebildet hat.
+Wenn ein - bei Feuchtigkeit steht bedeutet dies, dass die Vorkommensangaben
+bei Klima steht.
+
+				    Vorkommen
+				    *Feuchtigkeit*          *Klima*
+							    |
+		   Bruchholz        - > In Wald             |  -> In Wald
+Holz               Birkenholz  feucht,nrml,trocken          |        warm,mild,kalt
+		   Steineiche  nrml,trocken                 |        warm,mild
+		   Sandstein   trocken,strocken             |  heiss,warm
+Stein              Granit      -                            |  -> In Gebirge o. Huegel
+		   Basalt      -                            |  -> In Gebirge o. Huegel
+		   Holzkohle   -                            |  -> V, ab Koehler
+Brennmittel        Steinkohle  -                            |  -> In Gebirge o. Huegel
+		   Oel         nass,strocken o. Wasserfeld  |  heiss,warm
+		   Bronze      -                            |  -> siehe SK
+Metalle            Eisenerz    -                            |  -> siehe SK
+		   Meteoreisen -                            | kein abbaubares Vorkommen
+		   Silber      - oder Fluss                 |  -> siehe SK
+Edelmetalle        Golderz     - oder Fluss                 |  -> siehe SK
+		   Platin      -                            |  -> siehe SK
+		   Diamant     -                            |  -> siehe SK, Sehr Selten
+Rohdiamanten       Rubin       -                            |
+							    |
+		   Weizen        nrml,trocken               |        warm,mild
+Getreide           Reis          nass                       |        heiss,warm
+		   Mais          feucht,nrml                |        warm,mild,kalt
+		   Fruechte      nass                       |        heiss
+Nahrungsmittel     Gemuese       feucht,nrml                |        warm,mild,kalt
+		   Fisch         -                          |  -> Wasserfeld
+		   Fleisch       -                          |  -> V, ab Fleischer
+		   Suesswasser   -                          |  -> Wasserfeld
+Wasser             Milch         -                          |  -> V, ab Molkerei
+		   Wein          -                          |  -> V, ab Brauerei
+
+		   Huhn
+		   Gans
+		   Hausschwein
+Vieh               Schaf
+		   Ziege
+		   Kuh
+		   Ochse
+		   Wildrind
+		   Schweinsleder                            |  -> V, ab Gerberei
+Leder              Schwerleder                              |  -> V, ab
+		   Iryanleder                               |  -> V, ab
+	       /   Schafswolle                              |  -> V, ab Tuchmacher
+Stoffe     <----   Baumwolle                                |  -> V, ab Kleidermacher
+	       \   Seide                                    |  -> V, ab Seidenfabrik
+							    |
+		   Lehm                nass,feucht,nrml     | warm,mild,kalt
+Ziegel             Beton               feucht,nrml          | warm,mild
+		   Kalk
+Feingestein        Quarzsand
+		   Obsidian
+		   Knochen
+		   Schwefel
+		   Salz
+		   Teer
+
+		   ...
+
+Besonderheit Fluss :
+Bei bestimmten Gebieten mit Fluss und Rohstoffen die sich unter der
+Erde befinden, waescht der Fluss den Rohstoff aus und traegt ihn weiter.
+
+
+Angaben bei Bau, Unterhalt und Restauration beziehen sich nicht direkt
+auf einen Rohstoff. Sie haben also die Wahl zwischen mehreren Rohstoffen
+fuer ein und den selben Zweck.
+
+	   moegliche Austauschstoffe            Vorteile                Nachteile     Besonderheiten
+
+		   Birkenholz
+Holz               Steineichenholz              mehr RS,LE/weniger BF   schwer
+
+		   Sandstein                    schnellerer Abbau       weniger RS,LE
+Stein              Granit                       -                       -
+		   Basalt                       mehr RS                 schwer                   MR-Bonus
+		   Holzkohle                    -                       energiearm
+Brennmittel        Steinkohle                   -                       -
+		   Oel                          -                       energiereich
+
+		   Bronzeerz                    schnelle   V            -
+Rohmetalle         Eisenerz                     @
+
+		   Knochen                      sehr leicht,schnelle V  mehr BF/weniger LE        Nicht Ruestungen u. manche Waffen
+		   Bronze                       schnelle V              mehr BF/weniger LE/RS     -
+Metalle            Eisen                        @
+		   Stahl                        mehrLE/wenigerBF/mehrRS schwer
+		   Meteorstahl                  mehrLE/wenigerBF/mehrRS schwer,lange Verfeinerung/Bearbeitung
+
+
+DiamantRubin
+
+		   Weizen
+Getreide           Reis
+		   Mais
+		   Fruechte
+Nahrungsmittel     Gemuese
+		   Fisch
+		   Fleisch
+		   Suesswasser
+Wasser             Milch
+		   Wein
+		   Hausschwein
+Vieh               Schaf
+		   Karen
+		   Schweinsleder
+Leder              Schwerleder
+	       /   Schafswolle
+Stoffe     <----   Baumwolle
+	       \   Seide
+
+		   Lehm
+Ziegel             Beton
+		   Kalk
+Feingestein        Quarzsand
+		   Obsidian
+
+		   Knochen
+		   Schwefel
+		   Salz
+		   Teer
+
+		   ...
+
+
+
+
+
+
+6. Wisschenschaften ...
+
+Alle ihre Geb‰ude produzieren Tag fuer Tag immer das selbe.  Sie kˆnnen diesen Geb‰uden (besser : den Leuten in den Geb‰uden) sagen, dass sie neue Methoden zur Produktionssteigerung erfo4rschen sollen. Der N4ac]4hteil dieser Sache ist, dass das Geb‰ude keine (oder weniger, je nach Anteil) Produktion hat und sie trotzdem das Haus restaurieren, die Leutchen bezahlen und Rohstoffe hintransportieren muessen.
+
+6.1. Produktionsverbesserungen :
+
+- Produktionssteigerung : Erhoehung der aus den Rohstoffen erbrachten Menge.
+- Produktionsverschnellerung : Ein Rohstoff wird schneller abgebaut/verarbeitet.
+- neue Verwendungsmoeglichkeiten (neue Veredelung oder neuer Austauschsstoff)
+
+Um neue Rohstoffe zur Verarbeitung und Veredelung zu erforschen benˆtigen sie eine Alchimistenzunft, die ‰hnlich wie normale Geb‰ude funktioniert.
+Der zu erforschende Rohstoff wird hingebracht und dort analysiert. Wenn sie Gl¸ck haben steht er ihnen sofort zur Verf¸gung, ansonsten m¸ssen sie nochmals den Rohstoff zur Alchimistenzunft transportieren.
+
+Wissenstufen
+
+
+
+
+
+7. Ackerbau und Viehzucht
+
+7.1 Ackerbau
+
+Um Åberhaupt aussÑhen zu kînnen, muss erst einmal Bauernhof vorhanden sein.
+Ausserdem muss das Saatgut erforscht und genÅgend grosse Menge an Samen zum
+Hof gebracht werden.
+Letzeres stellt sich als grosses Problem dar, da, wenn man den Stoff noch
+nicht erforscht hat, sich keine Mîglichkeit des Anbaus ergibt.
+In diesem Fall muss man auf in der Natur vorkommenden Pflanzen stÅtzen.
+Dazu wiederum benîtigt man einen Pflanzenkundigen, der in der Wildniss
+nach neuen Pflanzen sucht.
+
+7.2 Viehzucht
+
+Bei Vieh muss auch erst eine Viehzucht gebaut werden, Vieh in der Wildniss
+eingefangen werden und dann Åber Wissenstufen (entspricht der ZÅchtung)
+zu besseren und produktiveren Tieren gezÅchtet werden.
+Um Tiere einzufangen benîtigt man einen JÑger.
+
+
+7.3 Versorgung
+
+
+7.3.1. Arten
+
+Es gibt 2 Arten von Nahrung :
+
+1. Die Nahrung die das Dorf und ihre Hoefe ihrer Armee zur Unterhalt stellt
+2. Nahrungspakete
+
+Die Nahrungspakete werden entweder in den Farmen und Hoefen oder
+in den Versorgungsgebaeuden zusammengestellt.
+Bei den Farmen und Hoefen ist die Ausbeute an Paketen relativ gering.
+Um ein Paket in Versorgungsgebaeuden zu erstellen muessen alle dazu
+benoetigten Stoffe dorthin gebracht werden als da waeren :
+
+
+2 Wuerste(2 Fleisch,2 Pfeffer,2 Salz)
+1 Torte(2 Milch,4 Eier,1 Brot(Mehl,Wasser),2 Zucker,4 Aepfel/4 Citrusfruechte)
+2 Brote/2 Reis/2 Mais
+4 Wein/4 Bier/6 Milch/8 Wasser
+2 Kaese (4 Milch)
+
+entspricht z.B.
+
+4 Fleisch
+4 Salz
+4 Pfeffer
+6 Milch
+4 Eier
+3 Mehl
+7 Wasser
+6 Zucker
+4 Aepfel
+4 Trauben
+
+Ergibt ein Nahrungspaket.
+
+7.3.2 Verteilung und Territorien
+
+In ihrem Gebiet stationierte Einheiten brauchen keine Nahrungspakete.
+Sie werden entweder durch ihre Hoefe (Falls sie welche haben) oder
+durch ihr Dorf versorgt. Sie koennen nur soviele Einheiten bauen,
+wie sie Nahrung besitzen.
+Sobald eine Einheit ihre Territorium aber verlaesst braucht sie nicht
+mehr versorgt werden.
+Ausserhalb verliert sie Lebens-,Attacke- und Paradepunkte, die sich
+nur sehr langsam wieder regenerieren(innerhalb des Gebiets), ausser
+man nimmt ein Nahrungspaket zu sich, das 1000 Zeiteinheiten haelt in
+der man keine Punkte verliert.
+
+
+	    innerhalb                    ausserhalb
+
+Einheiten   Regeneration(sobald Proviant)Essenschaden wenn kein Essen
+	    werden durch Hoefe versorgt muessen Proviantpakete zu sich nehmen
+
+
+
+
+Essenschaden : alle 100 Zeiteinheiten -10% LE,-1AT,-1PA,-1KK
+	       Die Einheit ist tot sobald einer der Werte unter 0 faellt.
+Regeneration : alle 200 Zeiteinheiten +10% LE,+1AT,+1PA,+1KK.
+	       Es muss ein Paket eingenommen werden um zu regenerieren.
+
+Ein Proviantpaket im Bauch "wirkt"(=kein Schaden) 1000 Zeiteinheiten.
+Normale Nahrung nur 100 Zeiteinheiten.
+
+
+Bsp: Der mutige Ork "GHRUZZRAGH MIT DER GROSSEN AXT" verlaesst mit einem
+Nahrungspaket seine Basis.
+Die normale Nahrung haelt ihn 100 Zeiteinheiten vom Schaden ab.
+Dannach ist er das Paket und stirbt an Plastikvergiftung.
+Nein. Stop. Er ist natuerlich den Proviant und ueberlebt nochmal 1000
+ZE. Da er sich zu weit weg gewagt hat braucht er nun wieder 400 ZE zurueck.
+Halb verhungert (-40% LE,-4AT,-4PA,-4KK) kommt er in seiner Basis wieder an.
+Nun braucht er ein weiteres Paket um sich 800 ZE (200*4) zu regenerieren.
+Dannach ist er wieder ein guter, braver Ork.
+
+
+Anmerkung : Die Angaben betreffen natuerlich nur die normalen Verhaeltnisse,
+also wenn Ghruzzragh durch freies Grasland laeuft ohne sich in einen Kampf
+zu verwickeln.
+
+7.3.5. Erhoehter Verbrauch an Nahrung
+
+In einem Kampf (also wenn die Einheit eine gegnerische Einheit attakiert)
+verdoppelt sich der Verbrauch.
+
+Je nach Klima verbraucht die Einheit unterschiedlich Nahrung.
+
+
+
+heiss +25% Verbrauch.
+warm  +10% "
+mild  +/-0%"
+kalt  +10% "
+
+
+Die Naesse modifiziert den Verbrauch zusaetzlich
+
+nass       erniedrigter Klimaverbrauch (z.B. Heiss wird zu warm). Bei Kalt +25% zus.
+feucht     -
+nrml.      -
+trocken    -
+strocken   erhoehter Klimaverbrauch (z.B. kalt wird zu mild). Bei heiss +25% zus.
+
+
+Die Angaben zeigen, dass sie mit ihren Armeen moeglichst nasskalte Eisgebiete oder
+staubtrockene heisse Wuesten meiden sollten.
+
+8. Das Dorf
+
+Im Dorf wohnen verschiedene Leute:
+
+a) Arbeiter
+
+Die Arbeiter werden von Unternehmern (z.B. Sie) ausgebildet, in den Betrieben
+eingesetzt und anschliessend entlohnt.
+Fuer den Lohn kaufen sie sich Essen,Kleidung und eine Wohnung.
+Wenn sie mehr als den Mindestlohn erhalten koennen sie sich Eintritte in
+verschiedene Veranstaltungen leisten (wie z.B. Theater).
+
+b) Soldaten
+
+Die Soldaten werden ebenfalls von ihnen ausgebildet und in ihre Truppe
+eingegliedert.
+Auch fuer sie muessen sie Lohn bezahlen, aber auch Essen,Trinken und
+Wohnung.
+Fuer den Lohn vergnuegen sie sich, oder setzen sich zur Ruhe.
+
+c) Eigenverdiener
+
+Reichere Einwohner des Dorfes stellen selbst Arbeiter ein, die dann
+verschiedene Gebaeude bauen, die ihnen Geld einbringen.
+Einerseits sind diese Leute Konkurenten, andererseits erhoehen sie den
+Lebensstandart der Einwohner
+*Vermehrung und Produktivitaet steigt durch Vergnuegung*, bauen gar
+eine Verteidigungseinrichtung oder treiben mit anderen Doerfern Handel.
+Hier nun moegliche Eigenverdiener :
+
+1. Bauern
+
+Produzieren und verkaufen Nahrung an die Doerfler.
+
+2. Haendler
+
+Handeln mit anderen Doerfern.
+
+3. Unternehmer
+
+Baut Haeusle.
+
+
+Einkommensmoeglichkeiten im Dorf
+
+1. Marktplatz
+
+Am Marktplatz koennen sie Waren an die Doerfler verkaufen oder auch Waren
+einkaufen.
+Dies ist besonders guenstig, wenn sie Rohstoffmangel haben oder gar keine
+besitzen (z.B. Am Anfang).
+Einkommen durch Miete ist gleich der Restauration.
+
+2. Tempel
+
+Verbessert Stimmung im Dorf. Bei Vergnuegungsgebaeuden zaehlt : Je mehr
+verschiedene um so besser. Geringe Einkommen durch Tempelkasse.
+Die Priester muessen bezahlt werden.
+
+3. Theater
+
+Verbessert Stimmung. Mittleres Einkommen durch Eintritt.
+Schauspieler muessen bezahlt werden.
+
+4. Naturpark
+
+Vermindert Umweltverschmutzung. Verbessert Stimmung im Dorf. Kein Einkommen.
+Gaertner muessen bezahlt werden.
+
+5. Strassen
+
+Durch Strassen koennen geringe Steuern erhoben werden (ohne Unruhen).
+Neue Haeuser koennen nur an Strassen gebaut werden (oder sie haben
+kein Nutzen).
+
+6. Stadtmauer
+
+Durch Stadtmauer koennen ebenfalls Steuern erhoben werden. Ausserdem
+Gibt sie im Kampf einen Verteidigungsbonus.
+
+7. Armee
+
+Auch durch ihre Armee koennen sie Steuern ohne Unruhen erheben.
+
+
+
+Natuerlich koennen sie die Doerfler durch alle oben genannten Gebaeude
+ausnehmen. Sie sollten aber immer ein Auge auf die Einkommen der Einwohner
+achten. Wenn jeder nur Geld fuer das noetigste hat, wird er wohl kaum
+in Theater gehen oder Steuern fuer Armee bezahlen koennen (Die Armee
+bringt ihm nix wenn er verhungert!).
+Ausnahme bildet hierbei der Tempel, in dem auch die Aermsten spenden
+(Aber sehr wenig).
+
+Die Prioritaeten der Einwohner bei der Geldausgabe ist folgende :
+
+
+Essen
+Wohnung
+Tempel
+Armee
+Stadtmauer
+Strassen
+Theater
+Luxus
+
+Wenn sie z.B. Am Marktplatz den Essenspreis halbieren, werden die Doerfler
+hauptsaechlich bei ihnen kaufen. Dadurch haben sie weniger Ausgaben, und
+werden mehr in Wohnung o.ae. investieren.
+Die Bauern aber werden sich entweder auf ein anderes, von ihnen nicht
+angebotenes Produkt spezialisieren, auch ihre Preise senken oder pleite
+machen, ihre Arbeiter entlassen.
+Die Ex-Bauern und Ex-Arbeiter bekommen dann kein Geld mehr und die Unruhe
+steigt.
+Dadurch zahlen sie weniger Steuern, die Kriminalitaet steigt ...
+Nun ja. Wie sie sehen sollten sie das nur machen, wenn wenig Bauern im
+Dorf stationiert sind.
+
+Anderes Beispiel :
+
+Sie verdoppeln am Marktplatz den Preis fuer Baumaterialien um den
+Unternehmern, die fleissig ihnen die Kundschaft wegnehmen,
+den Saft abzudrehen und mehr Leute fuer ihre Einrichtungen zu gewinnen.
+Dadurch machen sie entweder pleite (was dann geschieht steht oben), machen
+einen Preiskrieg oder kaufen ihre Produkte nicht mehr und machen sich
+unabhaengig, also bauen Rohstoffgebaeude, die, relativ zu ihren Preisen,
+billig sind.
+Dadurch kauft kein Unternehmer ihre Baumaterialien mehr ein und bauen
+noch mehr Haeuser. Ha! denken Sie sich. Dann halbier' ich die Preise wieder.
+Doch da die Unternehmer gerade ihre Rohstoffhaeuser gebaut haben (und das
+nicht mehr rueckgaengig zu machen ist) ist es fuer sie trotzdem billiger,
+selber zu produzieren (Der Preis zum Abbau ist fuer sie und Sie gleich und
+da sie am Marktplatz noch Gewinn machen wollen erhoehen sie die Preise etwas
+also teurer).
+
+Sie sehen also : Die Doerfler vergleichen eifrig die Preise und schauen, dass
+sie am meisten Gewinn machen.
+Durch Taktiken wie die Steuern zu erhoehen vernichten sie bloss die kleinen
+Unternehmer. Die grossen sehen dass als Zeitpunkt fuer die Selbstaendigkeit.
+
+
+9. Zeit und Geld ...
+
+
+200 Zeiteinheiten = 1 Tag
+
+
+
+In 10000 ZE (=50 Tagen) wird :
+
+100 * Produziert
+5   * Restauriert
+
+1  * Vermehrt (Pflanzen, Dorf, Tiere (Absterben nach der letzen Wachstumsphase)
+
+
+
+
+
+
+
+Vermehrung
+
+Pflanzen :
+
+		 Wachstumsphasen  wird Pflanze  Dauer
+		 bis zur          nach Ernte    bis zur erwachsenen
+		 Vermehrung       vernichtet?   Pflanze
+				  (Neusaat!)
+Getreide         3                 ?
+Mais             2                 ?
+Reis             2                 ?
+Zuckerrohr       1                 ?
+Zuckerruebe      2                 Ja
+Pfefferschote    3                 ?
+Birke                              Ja
+Steineiche                         Ja
+Flachs                             ?
+Baumwolle                          ?
+Apfelbaum                          Nein
+Zitronenbaum     1/4 -1 Jahr       Nein
+Trauben          1/4 -1 Jahr       Nein
+
+
+Alle 1/4 Jahr Ernte wenn beste Bedingungen fuer Pflanze (Feuchtigkeit, Waerme)
+Alle 1/2 Jahr Ernte wenn
+
+
+Wird fortgesetzt und verbessert ...
+
+
+Familie und Erben:
+
+...
+
+Seine Kinder bekommen dann eine Art Taschengeld. Sie koennen sich dann Essen
+und Kleider kaufen, Ersparnisse sammeln *Fuer ihren Einstieg ins Geschaeftsleben*
+oder sich Vergnuegen.
+
+
+Also :
+
+
+
+Arbeiter findet Frau    -> Arbeiter erhaelt Mitgift,
+			   Arbeiter zahlt Frau Taschengeld
+Frau kauft sich Essen,
+
+Frau bekommt Kind       -> Arbeiter zahlt Kind Taschengeld
+
+
+
+
+Transportmittel:
+
+Flasche    : besondere Fluessigkeiten (Milch,Wein,Bier,Honig,Treibstoff,Alkohol,Oel)
+Sack       : Pflanzen, Bergbau (Schwefel,Kohle
+Fass       : Fluessigkeiten,
+Tongefaess :
+Feldflasche: Wasser
+Kiste      : Zerbrechliche Dinge (Glas aller Art,Eier)
+
+
+Kriminalitaet
+
+Folgende Faktoren beeinflussen die Doerfler :
+
+Mord
+
+- Klassenunterschied von arm und reich -> Ueberfaelle oder Mord der reichen
+  Reicher muss 3* soviel Geld fuer Luxus ausgibt, als der Dorfdurchschnitt.
+  Armer darf max. soviel Geld haben damit er sich gerade ernaehren kann
+  (Also wenn er sich keinen Luxus leisten kann)
+  Aufklaerungswahrscheinlichkeit : mittel (wenig Planung)
+- Psychopat wird wenn gilt : Verlust der Familie durch Krieg,Bestrafung oder
+			   Mord.
+  Aufklaerungswahrscheinlichkeit : gut (keine Planung)
+- Moerder : Wurde angestellt durch Feind (Unternehmer toetet Unternehmer).
+  Aufklaerungswahrscheinlichkeit : schlecht (gute Planung)
+- Terrorist : Wurde vom Gegner geschickt. Hat sich als Tourist verkleidet.
+  Gilt als getarnte (als Tourist) gegnerische Einheit. Sie kann alles machen,
+  was eine normale Einheit auch machen kann.
+  (z.B. morden)
+  Aufklaerungswahrscheinlichkeit : gut - schlecht (je nach Tat)
+
+Diebstahl
+
+- Wird hauptsaechlich durch Arme durchgefuehrt (Bei zu niedrigen Einkommen, also
+wenn max 1/3 des Luxuswarenbedarfs gedeckt werden kann).
+  Aufklaerungswahrscheinlichkeit : mittel (je nach Tat)
+Strafe : normalerweise lange Kerkerstrafe. Auch Geldstrafe moeglich.
+  (nicht so effektiv!)
+
+- Sachbeschaedigung
+
+-durch Randalierer oder aufgebrachter Menschen
+
+
+Revolte
+
+Die Revolte kann nur durch :
+
+a) aktzeptieren der Forderungen der Bewohner (Todesstrafe abschaffen,
+		    geringere Steuern, Sofortbarauszahlung, etc.)
+b) Aufstand blutig niederschlagen (durch Heer).
+   Sobald die Doerfler die Armee sehen geschieht entweder :
+   a) ANGRIFF! (Sehr schlecht. Arbeiter gehen verloren und Armee wird
+		     verkleinert oder vernichtet)
+   b) Rueckzug. Aufruhr steigt.
+c) Rueckzug aus dem Dorf. Doerfler pluendern ein paar (Ihrer) Gebaeude.
+... niedergeschlagen werden.
+
+
+Strafen :
+
+Die effektivste Strafe ist die Todesstrafe. Dadurch wird nicht nur der
+Boesewicht bestraft sondern schreckt auch die Mitbewohner ab.
+Diese Strafe hat 2 Nachteile:
+Der kopflose Geselle wird nicht mehr brauchbar sein.
+Die Bevoelkerung haelt sich zwar mit Kriminalitaet zurueck, aber die
+Todesstrafe erhoeht Wahrscheinlichkeit fuer eine Revolte des gesamten Dorfes.
+
+
+
+
+Grenze :
+
+- Sie koennen die Grenze sperren (keine Terroristen oder Touristen mehr).
+- "Eintritt" verlangen (weniger Touristen)
+- Durchsuchung beordern (weniger Terroristen, weniger Touristen)
+- Zoelle fuer mitgebrachte Waren eintreiben
+
+
+Transport und Verderb :
+
+Um bestimmte Materialien von einem Ort zum anderen zu transportieren,
+muessen Transportbehaelter gebaut werden:
+
+1. Fluessigkeiten aller Art
+---> Wasser,Milch,Honig,Wein,Bier,reiner Alkohol,Oel
+
+- Flaschen : Fluessigkeiten in Flaschen haben die hoechste Haltedauer.
+	     Der Nachteil von Flaschen ist die Zerbrechlichkeit (Kampf!)
+	     und der Preis.
+  Spieltips : Am besten verwendet man Flaschen fuer teure Substanzen und
+	      Tinkturen, wie Gifte oder Heiltraenke.
+- Faesser  : Hohes Fassungsvermoegen vereint mit mittleren Produktionskosten
+	     und mittlerer Haltedauer.
+  Spieltips : Fuer normale Fluessigkeiten fuer den Alltagsgebrauch sind Faesser
+	      die beste Wahl.
+- Tongefaesse : relativ hoher Verschleiss und niedrigste Haltedauer.
+	       Der Vorteil sind die niedrigen Produktionskosten.
+  Spieltips : Bei geringem Einkommen oder moeglichst schnellem Abtransport
+	      sind Tongefaesse die erste Wahl.
+
+2. Koerniges und Kleines
+-------> Mehl,Sand,Schwefel,Kalk,Reis,Mais,Getreide,Zucker,Salz,Pfeffer,Apfel,Zuckerrohr,Zuckerruebe,Kohle,Holzkohle,Eisenerz,Bronzeerz,Golderz
+
+- Stoffbeutel : Im Stoffbeutel passt wenig rein, kann aber leicht von Einheiten getragen werden.
+    Spieltips : Der Beutel sollte von Pflanzensuchern oder Geologen benutzt werden, um neue Rohstoffe zu finden und aufzusammeln
+- Sack: Der Sack ist billig und hat grosses Fassungsvermoegen.
+	Die Haltbarkeit ist (bei Pflanzen) jedoch gering.
+  Spieltips : Der Sack sollte das Standarttransportmitteln sein. Von Transporten von Pflanzen ueber grosse Entfernungen ist abzuraten.
+- Tongefaess: Durch hohe Haltbarkeit und mittlere Kosten ist das Tongefaess die erste Wahl.
+  Spieltips : Setzen die Gefaesse vor allem bei teuren Rohstoffen ein.
+
+3. Sperriges und Grosses
+------> Waffen,Ruestungen,Eisen,Stahl,
+
+Koennen nur auf Waegen transportiert werden.
+
+
+
+Jeder der genannten Arten von Materialien (ausser Fluessigkeiten) kann auch
+in einem Transportwagen ohne Transportbehaelter transportiert werden.
+Hier ist die Haltbarkeit jedoch gering. Ausserdem kann ein Leut entsprechend
+seiner Tragkraft Stoffe mit sich fuehren

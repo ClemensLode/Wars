@@ -1,0 +1,45 @@
+Regelbuch, Version Alpha 0.02
+
+
+
+-------> S T E C K B R I E F <----------
+
+Titel:  WARS!
+Genre: Mix aus Aufbau-Spiel,Echtzeitstrategie,Rollenspiel,
+       Adventure und Wirtschaftssimulation
+Hersteller: CLAW-Software
+Vermarktung: In Verhandlung mit Sierra.
+Grafik: Aufloesungen 640*480, 800*600, 1024*768(u.u. auch 1280*1024)
+        Farbtiefe : 8 Bit also 256 Farben(u.u. auch 16 Bit)
+Ziel des Spiels: Weltherrschaft ihres Volkes. Doch geben Sie auf die "Fremden"
+                 acht!
+Features: - Komplettes Wirtschaftsystem. Jeder Einwohner wirtschaftet
+            selbst und kommt ihnen u.u. sogar in die Quere.
+          - Mehrere Spielmodi, wie
+            Einzelkaempfermodus (a la Diablo),
+            Doerflermodus(Vom Doerfler bis zum Handelsherrn),
+            Handelsherrenmodus(Bringen sie ihr Volk zu einem Wirtschaftlichen
+                               Aufschwung)
+            Feldherrnmodus(Der Ultimative Modus, bei dem Sie einen Grossteil
+                           der Regeln auswendig wissen sollten)
+          - Jede Einheit hat eigene Verhaltensweisen, die nicht nur vom Beruf
+            abhaengen.
+          - Wissenschaft: Erforschen Sie die Vegetation, die Rohstoffe, die
+                          Doerfler ...
+Sound: Geplant
+Rassen       : 10+1 Alien Rasse.
+Zahl der Eigenschaften pro Einheit: >50
+Pflanzenarten:>40
+Tierarten    :>20
+(Roh-)Stoffe       : >120.
+Berufsgruppen: Noch nicht bekannt. Mindestens 60.
+               Jeder Dorfbewohner waehlt Beruf selbst.
+Haeusertypen: 9 verschiedene Bauqualitaeten (Leder,Holz,Stein,etc.)*
+              bis zu 6 Erweiterungsstufen*
+              40 Gebaeude mit verschiedenen Funktionen
+Lauffaehig ab: Noch unbekannt. Wahrscheinlich P-133 mit 16 MB RAM.
+Betriebssystem: DOS, um schnelle Grafikdarstellung zu ermoeglichen.
+Programmiersprache: TURBO-PASCAL 7.0
+Erscheinungstermin: Mitte '98
+Vorraussichtlicher Preis: Noch unbekannt.
+

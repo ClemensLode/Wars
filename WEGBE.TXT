@@ -1,0 +1,30 @@
+Bewegung:
+
+Vorgaben:
+
+Eintritt ins Feld: links = X:8 ,Y:4
+                   oben  = X:24,Y:4
+                   rechts= X:24,Y:12
+                   unten = X:8 ,Y:12
+
+Ueberstehende Pixel: X=-8
+                     Y=19
+
+Mittelpunkt: X=16
+             Y=8
+
+
+Bewegung:
+
+Die Einheit laeuft solange, bis sie den Mittelpunkt des naechsten Felds erreicht hat.
+
+Also
+
+inc(px,gx*2-gy*2);
+inc(py,gx+gy);
+if (px=16) and (py=8) then begin
+Richtung aendern (gx,gy);
+inc(ax,gx);inc(ay,gy);
+px:=-gx*16;py:=-gy*8;
+end;
+

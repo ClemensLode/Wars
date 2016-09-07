@@ -1,0 +1,44 @@
+Einheiten Aussehen : 
+
+Rassen :
+
+
+Mensch
+Elf
+Zwerg
+Terraner
+Ork
+Oger
+Goblin
+
+* Echse
+* Risso
+* Troll
+* Halbling
+
+
+(11 Rassen * 2 Ruestungen * 6 Waffen + 1 Ruestung * 6 Waffen) * 2 Schild * 5 Bewegungen 
++ (11 Rassen * 2 Ruestungen * 6 Waffen + 1 Ruestung * 6 Waffen) * 2 Schild * 5 Angriffe
++ (11 Rassen * 2 Ruestungen * 6 Waffen + 1 Ruestung * 6 Waffen) * 2 Schild * 1 Abwehrer
++ (11 Rassen * 2 Ruestungen * 6 Waffen + 1 Ruestung * 6 Waffen) * 2 Schild * 1 getroffen
++ (11 Rassen * 2 Ruestungen * 6 Waffen + 1 Ruestung * 6 Waffen) * 2 Schild * 1 tot
+=3588
+
+1 Rasse = 312 Bildle
+
+
+3 Ruestungsarten a la Diablo (1-2 RS,3-5 RS,6-x RS)
+Waffenarten
+
+Stichwaffen (Dolche und Rapiere)
+Schlagwaffen (Hiebwaffen stumpf)
+Stangenwaffen (Speere,Staebe,Infanterie)                
+Scharfe Waffen (Zweihaender,Schwerter,Hiebwaffen scharf)
+Bogen
+Wurfwaffe
+
+
+Special : Schild
+
+
+

@@ -1,0 +1,73 @@
+procedure putsprite3;
+begin
+{  if (y>endey) or (x>endex) or (y<beginy) or (x<beginx) then exit;}
+    asm
+{     pushf;
+     pusha;
+{     mov di,word ptr spr.adr+2
+{     mov ds,word ptr $a000}  {Auf Datensegment nicht zugreifbar??? (Globale Variablen)}
+     xor cx,cx
+     xor di,di
+{     xor ax,ax
+     mov cl,spr.dtx
+     add ax,cx
+     mov cl,spr.dty
+     mul ax,bx
+     mov di,ax}
+     mov cl,spr.dty             {Zaehler fuer y initialisieren}
+{     dec cl
+     {mov dx,y                   {Y-Wert in dx. Schneller!}
+     @loop1:
+     dec cx
+     jz @endeende                   {Fertig?}
+     add cx,y                  {Ueberpruefung, ob noch im Fenster}
+     mov ax,cx
+     shr ax,6
+     cmp al,akw
+     je @nothing
+     mov akw,al
+     shl ax,4
+     xor dx,dx
+     mov dl,al
+     mov AH,$4F
+     mov AL,5
+     xor bx,bx
+     call p
+     @nothing:
+     mov bx,cx                  {Tatsaechliche Y-Koordinate "errechnet"}
+     and bx,64
+{     shr bx,6
+     shl bx,6                   {Runden}
+     mov ax,cx
+     sub ax,bx                  {Position des Fensters abziehen. Nun in ax entgueltige Y-Koordinate}
+     shl ax,10
+     xor bx,bx
+     mov bl,spr.dtx
+     add ax,x
+     add bx,ax
+     mov comp,ax
+{     sub ax,x
+ {    dec bx}
+     xor si,si
+     pop si
+     @loop2:
+     inc si
+     dec bx
+     cmp bx,comp
+     je @ende1
+     mov dl,byte ptr spr.adr[si]
+{     or dl,dl
+     jz @loop2}
+     mov ax,$a000
+     mov es,ax
+     mov byte ptr es:[bx],dl
+     jmp @loop2
+     @ende1:
+     push si
+     sub cx,y
+    {sub bx,x
+     dec bx  }
+     jmp @loop1
+     @endeende:
+    end;
+end;

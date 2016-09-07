@@ -1,0 +1,102 @@
+Procedure newput(ox,oy:word;spr:spritetyp);
+var recover:word;
+begin
+asm
+  push ds
+  lds si,spr.adr             {fertiges Bild als Quelle}
+  mov ax,$a000                 {VGA als Ziel}
+  mov es,ax
+  xor bx,bx
+  add bx,oy
+  mov cx,ds
+  pop ds
+  shl bx,1
+  mov ax,word ptr screeny[bx]
+  mov di,ax
+  mov ax,word ptr sfenster[bx]
+  cmp ax,akw
+  je @weiter3
+  mov akw,ax
+  mov dx,ax
+  mov AH,$4F
+  mov AL,5
+  push bx
+  xor bx,bx
+  call p
+  pop bx
+  @weiter3:
+  shr bx,1
+  push ds
+  mov ds,cx
+  sub bx,oy
+  add di,ox
+  @loop1:
+  mov ax,spr.dtx
+{  shr ax,1     Optimierung}
+  mov cx,ax        {100 Zeilen als Dwords kopieren}
+  @loop2:
+
+{  pop ds
+  xor ax,ax
+  mov al,hell
+  push ds
+  mov ds,recover}
+  mov dx,[si]
+{  add dx,ax
+  mov ax,dx
+
+  mov dx,ax}
+  or dx,dx
+  jz @loop3
+
+  or dl,dl
+  jz @point1
+
+  or dh,dh
+  jz @point2
+
+  mov es:[di],dx
+  jmp @loop3
+  @point1:
+  mov es:[di+1],dh
+  jmp @loop3
+  @point2:
+  mov es:[di],dl
+  @loop3:
+  add di,2
+  add si,2
+  dec cx
+  jz @endex
+jmp @loop2
+  @endex:
+{  db 66h                          {Operand Size Prefix (32 Bit)}
+{ rep movsw                     {kopieren}
+  add bx,oy
+  mov cx,ds
+  pop ds
+  shl bx,1
+  mov ax,word ptr screeny[bx]
+  mov di,ax
+  mov ax,word ptr sfenster[bx]
+  cmp ax,akw
+  je @weiter2
+  mov akw,ax
+  mov dx,ax
+  mov AH,$4F
+  mov AL,5
+  push bx
+  xor bx,bx
+  call p
+  pop bx
+  @weiter2:
+  shr bx,1
+  sub bx,oy
+  push ds
+  mov ds,cx
+  add di,ox
+  inc bx
+  cmp bx,spr.dty
+  jne @loop1
+  pop ds
+End;
+end;
