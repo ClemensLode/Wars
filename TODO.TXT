@@ -1,4 +1,0 @@
-Reagieren auf blockierte Felder
-Ueberpruefung des ersten Schrittes ob Ziel nur 1 Feld weit weg
-Startpunkt registrieren
-
